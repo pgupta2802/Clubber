@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Sponsor {
     String name;
     int fundsGiven;
-    private ArrayList<Sponsor> sponsors = new ArrayList();
+    public static ArrayList<Sponsor> sponsors = new ArrayList();
 
-    Sponsor(String name, int fundsGiven) {
+    public Sponsor(String name, int fundsGiven) {
         this.name = name;
         this.fundsGiven = fundsGiven;
         addSponsor(this);
@@ -17,27 +17,45 @@ public class Sponsor {
 
 
     public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        return this.name;
     }
 
     public int getFundsGiven() {
         return fundsGiven;
     }
 
-    public void setFundsGiven(int fundsGiven) {
-        this.fundsGiven = fundsGiven;
-    }
-
     public void addFunds(int funds) {
         this.fundsGiven += funds;
     }
 
+    //Array Methods
     public void addSponsor(Sponsor s) {
         sponsors.add(s);
+    }
+
+    public static boolean sponsorList() {
+        for (int i = 0; i < sponsors.size(); i++) {
+            System.out.println(sponsors.get(i).getName() + " " + sponsors.get(i).getFundsGiven());
+
+        }
+        return true;
+    }
+
+    public static void removemySponsor(String name) {
+        for (int i = 0; i < sponsors.size(); i++) {
+            if (sponsors.get(i).getName().equals(name)) {
+                sponsors.remove(i);
+            }
+            System.out.println("Sponsor " + name + " removed successfully");
+        }
+    }
+
+    public static int sponsorfunds() {
+        int funds = 0;
+        for (int i = 0; i < sponsors.size(); i++) {
+            funds += sponsors.get(i).getFundsGiven();
+        }
+        return funds;
     }
 
 

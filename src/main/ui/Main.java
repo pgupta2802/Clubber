@@ -29,11 +29,11 @@ public class Main {
 
             while (keepGoing) {
                 displayMenu();
-                Scanner in = new Scanner(System.in);
-                int a = in.nextInt();
-                if (a == 1) {
-                    addNewMember();
-                }
+                //Scanner in = new Scanner(System.in);
+                //int a = in.nextInt();
+                //if (a == 1) {
+                  //  addNewMember();
+                //}
 
 
             }
@@ -47,16 +47,43 @@ public class Main {
             System.out.println("Menu");
             System.out.println("Press 1 for Member");
             System.out.println("Press 2 for Sponsor");
-            System.out.print("Press 3 for Event");
+            System.out.println("Press 3 for Event");
+            System.out.println("Press 4 for Total funds recieved");
             int input = in.nextInt();
             if (input == 1) {
                 displayMemberMenu();
             }
+            if (input == 2) {
+                displaySponsorMenu();
+            }
+            if (input == 3) {
+                displayEventMenu();
+            }
+            if (input == 4) {
+                totalfundsRecieved();
+            }
+
+
+        }
+
+        public  void totalfundsRecieved() {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Here are your total funds");
+            System.out.println("Funds recieved by sponsors");
+            System.out.println("Funds recieved are " + " $ " + Sponsor.sponsorfunds());
+           // System.out.println("Funds recieved by Sponsors"+ " $ " + String.valueOf(Member.memberFunds()));
+            System.out.println();
+            System.out.println("Press enter to continue");
+            in.nextLine();
+            System.out.println();
+            displayMenu();
+
 
         }
 
         public void displayMemberMenu() {
             Scanner in = new Scanner(System.in);
+            System.out.println();
             System.out.println("This is member Menu");
             System.out.println("Press 1 for Adding new member");
             System.out.println("Press 2 for Retrieving the list of member");
@@ -86,9 +113,6 @@ public class Main {
                 displayMenu();
             }
 
-            in.nextLine();
-
-
         }
 
         public void addNewMember() {
@@ -117,6 +141,7 @@ public class Main {
         public void listofMembers() {
             Scanner in = new Scanner(System.in);
             Member.memberList();
+            System.out.println();
             System.out.println("Press enter to continue");
             in.nextLine();
             displayMemberMenu();
@@ -155,6 +180,122 @@ public class Main {
             System.out.println("Press enter to continue");
             in.nextLine();
             displayMemberMenu();
+        }
+
+
+        public void displaySponsorMenu() {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Press 1 for adding Sponsor");
+            System.out.println("Press 2 to see a list of sponsors");
+            System.out.println("Press 3 to remove a sponsor");
+            System.out.println("Press 4 to see total funds received from sponsors");
+            System.out.println("Press 5 for Main Menu");
+            int input = in.nextInt();
+            if (input == 1) {
+                addSponsor();
+            }
+            if (input == 2) {
+                listofSponsors();
+            }
+            if (input == 3) {
+                removeSponsor();
+            }
+
+            if (input == 4) {
+                fundsRecieved();
+            }
+            if (input == 5) {
+                displayMenu();
+            }
+
+        }
+
+        //1
+        public void addSponsor() {
+            Scanner in = new Scanner(System.in);
+            System.out.println("What is the name of the sponsor");
+            String name = in.nextLine();
+            System.out.println("Total funds given by the sponsor?");
+            int funds = in.nextInt();
+            Sponsor newSpon = new Sponsor(name, funds);
+            System.out.println("Sponsor added successfully!");
+            System.out.println("Press enter to continue ");
+            in.nextLine();
+            displaySponsorMenu();
+
+        }
+
+        //2
+        public void listofSponsors() {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Here is the list of all sponsors");
+            Sponsor.sponsorList();
+            System.out.println("Press enter to continue ");
+            in.nextLine();
+            displaySponsorMenu();
+        }
+
+        //3
+        public void removeSponsor() {
+            Scanner in = new Scanner(System.in);
+            System.out.println("What is the name of the sponsor?");
+            String name = in.nextLine();
+            in.nextLine();
+            displaySponsorMenu();
+
+        }
+
+        //4
+        public void fundsRecieved() {
+            System.out.println("Funds recieved by Sponsors are as follows");
+            Sponsor.sponsorList();
+            System.out.println("Total funds recieved are " + " $ " + Sponsor.sponsorfunds());
+        }
+
+
+        public void displayEventMenu() {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Here you can add new events");
+            System.out.println("Press 1 to create a new event");
+            System.out.println("Press 2 to see upcoming events");
+            System.out.println("Press 3 to go back to the main menu");
+            int input = in.nextInt();
+            if (input == 1) {
+                addEvent();
+            }
+            if (input == 2) {
+                upcomingEvents();
+            }
+            if (input == 3) {
+                displayMenu();  ;
+            }
+
+
+        }
+//1
+        public void addEvent() {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Enter the name of the event");
+            String event = in.nextLine();
+            System.out.println("Enter the date dd-mm-yyyy");
+            String date = in.nextLine();
+            Events newEvent = new Events(event, date);
+            System.out.println("Event created Successfully");
+            System.out.println("Press enter to continue ");
+            in.nextLine();
+            displayEventMenu();
+        }
+
+        public void upcomingEvents(){
+            Scanner in = new Scanner(System.in);
+            System.out.println("Here is the list of all Events");
+            Events.EventList();
+            System.out.println();
+            System.out.println("Press enter to continue ");
+            in.nextLine();
+            displayEventMenu();
+
+
         }
 
 

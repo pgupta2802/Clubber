@@ -1,29 +1,38 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Events {
     private String eventname;
-    //private ArrayList<Date>;
-    private ArrayList<Events> event = new ArrayList();
+    private String eventdate;
+    static ArrayList<Events> event = new ArrayList();
 
-    Events(String name) {
+    public Events(String name, String date) {
         this.eventname = name;
+        this.eventdate = date;
         addEvent(this);
     }
 
-
     public String getEventname() {
-        return eventname;
+        return this.eventname;
     }
 
-    public void setEventname(String eventname) {
-        this.eventname = eventname;
+    public String getEventdate() {
+        return this.eventdate;
     }
 
+
+    //Array
     public void addEvent(Events e) {
         event.add(e);
+    }
+
+    public static boolean EventList() {
+        for (int i = 0; i < event.size(); i++) {
+            System.out.println(event.get(i).eventname + " " + event.get(i).eventdate);
+
+        }
+        return true ;
     }
 
 

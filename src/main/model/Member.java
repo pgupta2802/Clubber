@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Member {
+
     private String name;
     private String designation = "Member";
     private boolean isFeesPaid = false;
     private String email;
     private String task;
     private String taskStatus;
+    private static int memberFunds = 0;
+    @SuppressWarnings("checkstyle:VisibilityModifier")
     public static List<Member> members = new ArrayList();
 
 
@@ -17,6 +20,9 @@ public class Member {
         this.name = name;
         this.designation = designation;
         this.isFeesPaid = isFeesPaid;
+        if (isFeesPaid) {
+            feesIspaid();
+        }
         this.email = email;
         this.task = task;
         this.taskStatus = taskComplete;
@@ -34,8 +40,13 @@ public class Member {
         return this.designation;
     }
 
-    public boolean getFeesPaid() {
-        return this.isFeesPaid;
+    public void feesIspaid() {
+        memberFunds += 5;
+
+    }
+
+    public static int memberFunds() {
+        return memberFunds;
     }
 
 
@@ -73,43 +84,27 @@ public class Member {
         }
     }
 
-    public static void removeMember(String name, String desig){
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).getName().equals(name)&&members.get(i).getDesignation().equals(desig)) {
-                members.remove(i);
-            }
-            System.out.println("Member removed successfully");
-        }
-    }
 
-    public static void removemyMember(String name, String desig){
+    public static void removemyMember(String name, String desig) {
         for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).getName().equals(name)&&members.get(i).getDesignation().equals(desig)) {
+            if (members.get(i).getName().equals(name) && members.get(i).getDesignation().equals(desig)) {
                 members.remove(i);
             }
             System.out.println("Member " + name + " removed successfully");
         }
     }
 
-    public static void feesPaidMembers(){
+    public static boolean feesPaidMembers() {
+        boolean a = false;
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isFeesPaid) {
                 System.out.println(members.get(i).getName());
+                a = true;
+                ;
             }
         }
+        return a;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
