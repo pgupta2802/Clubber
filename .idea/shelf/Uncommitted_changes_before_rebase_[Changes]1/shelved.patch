@@ -1,0 +1,11 @@
+Index: src/test/model/Modeltest.java
+===================================================================
+diff --git a/src/test/model/Modeltest.java b/src/test/model/Modeltest.java
+deleted file mode 100644
+--- a/src/test/model/Modeltest.java	
++++ /dev/null	
+@@ -1,4 +0,0 @@
+-package model;
+-
+-public class Modeltest {
+-}

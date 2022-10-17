@@ -1,0 +1,320 @@
+Index: src/main/ui/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ui;\n\nimport model.Events;\nimport model.Member;\nimport model.Sponsor;\n\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Clubber newApp = new Clubber();\n\n    }\n\n    public static class Clubber {\n        private Sponsor spon;\n        private Member memb;\n        private Events even;\n\n        public Clubber() {\n            runClubber();\n        }\n\n\n        public void runClubber() {\n\n\n            boolean keepGoing = true;\n\n            while (keepGoing) {\n                displayMenu();\n                //Scanner in = new Scanner(System.in);\n                //int a = in.nextInt();\n                //if (a == 1) {\n                  //  addNewMember();\n                //}\n\n\n            }\n\n        }\n\n        public void displayMenu() {\n            System.out.println(\"Welcome To Clubber\");\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Here You can Store a List of your Sponsors, Members, Events\");\n            System.out.println(\"Menu\");\n            System.out.println(\"Press 1 for Member\");\n            System.out.println(\"Press 2 for Sponsor\");\n            System.out.println(\"Press 3 for Event\");\n            System.out.println(\"Press 4 for Total funds recieved\");\n            int input = in.nextInt();\n            if (input == 1) {\n                displayMemberMenu();\n            }\n            if (input == 2) {\n                displaySponsorMenu();\n            }\n            if (input == 3) {\n                displayEventMenu();\n            }\n            if (input == 4) {\n                totalfundsRecieved();\n            }\n\n\n        }\n\n        public  void totalfundsRecieved() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Here are your total funds\");\n            System.out.println(\"Funds recieved by sponsors\");\n            System.out.println(\"Funds recieved are \" + \" $ \" + Sponsor.sponsorfunds());\n           // System.out.println(\"Funds recieved by Sponsors\"+ \" $ \" + String.valueOf(Member.memberFunds()));\n            System.out.println();\n            System.out.println(\"Press enter to continue\");\n            in.nextLine();\n            System.out.println();\n            displayMenu();\n\n\n        }\n\n        public void displayMemberMenu() {\n            Scanner in = new Scanner(System.in);\n            System.out.println();\n            System.out.println(\"This is member Menu\");\n            System.out.println(\"Press 1 for Adding new member\");\n            System.out.println(\"Press 2 for Retrieving the list of member\");\n            System.out.println(\"Press 3 for Removing a member\");\n            System.out.println(\"Press 4 for assigning a new task to a member\");\n            System.out.println(\"Press 5 for fees paid  member\");\n            System.out.println(\"Press 6 for Main Menu\");\n            int input = in.nextInt();\n            if (input == 1) {\n                addNewMember();\n            }\n            if (input == 2) {\n                listofMembers();\n            }\n            if (input == 3) {\n                removeMember();\n            }\n\n            if (input == 4) {\n                assignNewtask();\n            }\n\n            if (input == 5) {\n                listofFeesPaid();\n            }\n            if (input == 6) {\n                displayMenu();\n            }\n\n        }\n\n        public void addNewMember() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Here you can add a new member\");\n            System.out.println(\"Name of the Member\");\n            String name = in.nextLine();\n            System.out.println(\"Designation of Member\");\n            String desg = in.nextLine();\n            System.out.println(\"Has the member paid fees? true/false\");\n            boolean fees = in.nextBoolean();\n            in.nextLine();\n            System.out.println(\"What is the email of the member?\");\n            String email = in.nextLine();\n            System.out.println(\"Task assigned to the member?\");\n            String task = in.nextLine();\n            System.out.println(\"Has the member completed the task? true/false\");\n            String taskStatus = in.nextLine();\n            Member newMem = new Member(name, desg, fees, email, task, taskStatus);\n            System.out.println(\"Member added, press enter to continue\");\n            in.nextLine();\n\n            displayMemberMenu();\n        }\n\n        public void listofMembers() {\n            Scanner in = new Scanner(System.in);\n            Member.memberList();\n            System.out.println();\n            System.out.println(\"Press enter to continue\");\n            in.nextLine();\n            displayMemberMenu();\n\n        }\n\n        public void assignNewtask() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Please enter the name of member\");\n            String name = in.nextLine();\n            in.nextLine();\n            System.out.println(\"Please enter the new task\");\n            String task = in.nextLine();\n            Member.changeTask(name, task);\n            System.out.println(\"Press enter to continue\");\n            in.nextLine();\n            displayMemberMenu();\n        }\n\n        public void removeMember() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Enter the name of member \");\n            String name = in.nextLine();\n            System.out.println(\"Enter the designation\");\n            String desig = in.nextLine();\n            Member.removemyMember(name, desig);\n            System.out.println(\"Press enter to continue\");\n            in.nextLine();\n            displayMemberMenu();\n\n        }\n\n        public void listofFeesPaid() {\n            Scanner in = new Scanner(System.in);\n            Member.feesPaidMembers();\n            System.out.println(\"Press enter to continue\");\n            in.nextLine();\n            displayMemberMenu();\n        }\n\n\n        public void displaySponsorMenu() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Press 1 for adding Sponsor\");\n            System.out.println(\"Press 2 to see a list of sponsors\");\n            System.out.println(\"Press 3 to remove a sponsor\");\n            System.out.println(\"Press 4 to see total funds received from sponsors\");\n            System.out.println(\"Press 5 for Main Menu\");\n            int input = in.nextInt();\n            if (input == 1) {\n                addSponsor();\n            }\n            if (input == 2) {\n                listofSponsors();\n            }\n            if (input == 3) {\n                removeSponsor();\n            }\n\n            if (input == 4) {\n                fundsRecieved();\n            }\n            if (input == 5) {\n                displayMenu();\n            }\n\n        }\n\n        //1\n        public void addSponsor() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"What is the name of the sponsor\");\n            String name = in.nextLine();\n            System.out.println(\"Total funds given by the sponsor?\");\n            int funds = in.nextInt();\n            Sponsor newSpon = new Sponsor(name, funds);\n            System.out.println(\"Sponsor added successfully!\");\n            System.out.println(\"Press enter to continue \");\n            in.nextLine();\n            displaySponsorMenu();\n\n        }\n\n        //2\n        public void listofSponsors() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Here is the list of all sponsors\");\n            Sponsor.sponsorList();\n            System.out.println(\"Press enter to continue \");\n            in.nextLine();\n            displaySponsorMenu();\n        }\n\n        //3\n        public void removeSponsor() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"What is the name of the sponsor?\");\n            String name = in.nextLine();\n            in.nextLine();\n            displaySponsorMenu();\n\n        }\n\n        //4\n        public void fundsRecieved() {\n            System.out.println(\"Funds recieved by Sponsors are as follows\");\n            Sponsor.sponsorList();\n            System.out.println(\"Total funds recieved are \" + \" $ \" + Sponsor.sponsorfunds());\n        }\n\n\n        public void displayEventMenu() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Here you can add new events\");\n            System.out.println(\"Press 1 to create a new event\");\n            System.out.println(\"Press 2 to see upcoming events\");\n            System.out.println(\"Press 3 to go back to the main menu\");\n            int input = in.nextInt();\n            if (input == 1) {\n                addEvent();\n            }\n            if (input == 2) {\n                upcomingEvents();\n            }\n            if (input == 3) {\n                displayMenu();  ;\n            }\n\n\n        }\n//1\n        public void addEvent() {\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Enter the name of the event\");\n            String event = in.nextLine();\n            System.out.println(\"Enter the date dd-mm-yyyy\");\n            String date = in.nextLine();\n            Events newEvent = new Events(event, date);\n            System.out.println(\"Event created Successfully\");\n            System.out.println(\"Press enter to continue \");\n            in.nextLine();\n            displayEventMenu();\n        }\n\n        public void upcomingEvents(){\n            Scanner in = new Scanner(System.in);\n            System.out.println(\"Here is the list of all Events\");\n            Events.EventList();\n            System.out.println();\n            System.out.println(\"Press enter to continue \");\n            in.nextLine();\n            displayEventMenu();\n\n\n        }\n\n\n    }\n\n}\n\n\n\n\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/ui/Main.java b/src/main/ui/Main.java
+--- a/src/main/ui/Main.java	
++++ b/src/main/ui/Main.java	
+@@ -140,7 +140,8 @@
+ 
+         public void listofMembers() {
+             Scanner in = new Scanner(System.in);
+-            Member.memberList();
++            String mem = Member.memberList();
++            System.out.println(mem);
+             System.out.println();
+             System.out.println("Press enter to continue");
+             in.nextLine();
+@@ -229,7 +230,8 @@
+         public void listofSponsors() {
+             Scanner in = new Scanner(System.in);
+             System.out.println("Here is the list of all sponsors");
+-            Sponsor.sponsorList();
++            String sponsor1 = Sponsor.sponsorList();
++            System.out.println(sponsor1);
+             System.out.println("Press enter to continue ");
+             in.nextLine();
+             displaySponsorMenu();
+@@ -289,7 +291,8 @@
+         public void upcomingEvents(){
+             Scanner in = new Scanner(System.in);
+             System.out.println("Here is the list of all Events");
+-            Events.EventList();
++            String event1 = Events.EventList();
++            System.out.println(event1);
+             System.out.println();
+             System.out.println("Press enter to continue ");
+             in.nextLine();
+Index: src/main/model/Member.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/model/Member.java b/src/main/model/Member.java
+deleted file mode 100644
+--- a/src/main/model/Member.java	
++++ /dev/null	
+@@ -1,110 +0,0 @@
+-package model;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-
+-public class Member {
+-
+-    private String name;
+-    private String designation = "Member";
+-    private boolean isFeesPaid = false;
+-    private String email;
+-    private String task;
+-    private String taskStatus;
+-    private static int memberFunds = 0;
+-    @SuppressWarnings("checkstyle:VisibilityModifier")
+-    public static List<Member> members = new ArrayList();
+-
+-
+-    public Member(String name, String designation, boolean isFeesPaid, String email, String task, String taskComplete) {
+-        this.name = name;
+-        this.designation = designation;
+-        this.isFeesPaid = isFeesPaid;
+-        if (isFeesPaid) {
+-            feesIspaid();
+-        }
+-        this.email = email;
+-        this.task = task;
+-        this.taskStatus = taskComplete;
+-        //this.members = members;
+-        addMember(this);
+-
+-
+-    }
+-
+-    public String getName() {
+-        return this.name;
+-    }
+-
+-    public String getDesignation() {
+-        return this.designation;
+-    }
+-
+-    public void feesIspaid() {
+-        memberFunds += 5;
+-
+-    }
+-
+-    public static int memberFunds() {
+-        return memberFunds;
+-    }
+-
+-
+-    public String getEmail() {
+-        return this.email;
+-    }
+-
+-
+-    public String getTask() {
+-        return this.task;
+-    }
+-
+-    public String getTaskStatus() {
+-        return this.taskStatus;
+-    }
+-
+-
+-    //Array list methods
+-    public void addMember(Member m) {
+-        members.add(m);
+-    }
+-
+-    public static void memberList() {
+-        for (int i = 0; i < members.size(); i++) {
+-            System.out.println(members.get(i).getName() + " " + members.get(i).getDesignation() + " " + members.get(i).getEmail());
+-
+-        }
+-    }
+-
+-    public static void changeTask(String name, String newTask) {
+-        for (int i = 0; i < members.size(); i++) {
+-            if (members.get(i).getName().equals(name)) {
+-                members.get(i).getTask().equals(newTask);
+-            }
+-        }
+-    }
+-
+-
+-    public static void removemyMember(String name, String desig) {
+-        for (int i = 0; i < members.size(); i++) {
+-            if (members.get(i).getName().equals(name) && members.get(i).getDesignation().equals(desig)) {
+-                members.remove(i);
+-            }
+-            System.out.println("Member " + name + " removed successfully");
+-        }
+-    }
+-
+-    public static boolean feesPaidMembers() {
+-        boolean a = false;
+-        for (int i = 0; i < members.size(); i++) {
+-            if (members.get(i).isFeesPaid) {
+-                System.out.println(members.get(i).getName());
+-                a = true;
+-                ;
+-            }
+-        }
+-        return a;
+-    }
+-
+-
+-}
+Index: src/main/model/Sponsor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/model/Sponsor.java b/src/main/model/Sponsor.java
+deleted file mode 100644
+--- a/src/main/model/Sponsor.java	
++++ /dev/null	
+@@ -1,62 +0,0 @@
+-package model;
+-
+-import java.util.ArrayList;
+-
+-public class Sponsor {
+-    String name;
+-    int fundsGiven;
+-    public static ArrayList<Sponsor> sponsors = new ArrayList();
+-
+-    public Sponsor(String name, int fundsGiven) {
+-        this.name = name;
+-        this.fundsGiven = fundsGiven;
+-        addSponsor(this);
+-
+-
+-    }
+-
+-
+-    public String getName() {
+-        return this.name;
+-    }
+-
+-    public int getFundsGiven() {
+-        return fundsGiven;
+-    }
+-
+-    public void addFunds(int funds) {
+-        this.fundsGiven += funds;
+-    }
+-
+-    //Array Methods
+-    public void addSponsor(Sponsor s) {
+-        sponsors.add(s);
+-    }
+-
+-    public static boolean sponsorList() {
+-        for (int i = 0; i < sponsors.size(); i++) {
+-            System.out.println(sponsors.get(i).getName() + " " + sponsors.get(i).getFundsGiven());
+-
+-        }
+-        return true;
+-    }
+-
+-    public static void removemySponsor(String name) {
+-        for (int i = 0; i < sponsors.size(); i++) {
+-            if (sponsors.get(i).getName().equals(name)) {
+-                sponsors.remove(i);
+-            }
+-            System.out.println("Sponsor " + name + " removed successfully");
+-        }
+-    }
+-
+-    public static int sponsorfunds() {
+-        int funds = 0;
+-        for (int i = 0; i < sponsors.size(); i++) {
+-            funds += sponsors.get(i).getFundsGiven();
+-        }
+-        return funds;
+-    }
+-
+-
+-}
+Index: src/main/model/Events.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/model/Events.java b/src/main/model/Events.java
+deleted file mode 100644
+--- a/src/main/model/Events.java	
++++ /dev/null	
+@@ -1,39 +0,0 @@
+-package model;
+-
+-import java.util.ArrayList;
+-
+-public class Events {
+-    private String eventname;
+-    private String eventdate;
+-    static ArrayList<Events> event = new ArrayList();
+-
+-    public Events(String name, String date) {
+-        this.eventname = name;
+-        this.eventdate = date;
+-        addEvent(this);
+-    }
+-
+-    public String getEventname() {
+-        return this.eventname;
+-    }
+-
+-    public String getEventdate() {
+-        return this.eventdate;
+-    }
+-
+-
+-    //Array
+-    public void addEvent(Events e) {
+-        event.add(e);
+-    }
+-
+-    public static boolean EventList() {
+-        for (int i = 0; i < event.size(); i++) {
+-            System.out.println(event.get(i).eventname + " " + event.get(i).eventdate);
+-
+-        }
+-        return true ;
+-    }
+-
+-
+-}
+Index: src/test/model/MemberTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\n\nimport model.Member;\nimport org.junit.Before;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass MemberTest {\n\n    Member x ;\n    Member y ;\n    Member z ;\n\n    @BeforeEach\n    void runBefore(){\n        //String name, String designation, boolean isFeesPaid, String email, String task, String taskComplete\n        x = new Member(\"Pranjal\", \"President\" , true , \"pranjal@ubc.com\" , \"none\", \"true\" );\n        y = new Member(\"Bill Gates\", \"Vice President\" , false , \"bill@ubc.com\" , \"none\", \"true\" );\n        z = new Member(\"Tim Cook\", \"Secretary\" , false , \"tim@ubc.com\" , \"none\", \"true\" );\n    }\n\n\n\n    @Test\n     void testMemberFunds(){\n        assertEquals(5, Member.memberFunds());\n    }\n\n    @Test\n    void testAddMember(){\n        assertEquals(3,Member.members.size());\n    }\n\n    @Test\n    public void testChangeTask(){\n        x.changeTask(\"Pranjal\" , \"bring new members\");\n        y.changeTask(\"Tim Cook\" , \"make app interesting\");\n\n        assertEquals(x.getTask(), \"bring new members\");\n        assertEquals(y.getTask(), \"make app interesting\");\n\n    }\n    @Test\n   public void testRemoveMember(){\n        Member.removemyMember(\"Bill Gates\", \"Vice President\");\n        Member.removemyMember(\"Tim Cook\", \"Secretary\");\n\n        assertEquals(1, Member.members.size());\n\n    }\n\n    @Test\n     public void testFeesPaidMembers(){\n\n        assertTrue( Member.feesPaidMembers());\n\n\n\n\n    }\n\n\n\n\n\n}\n
+===================================================================
+diff --git a/src/test/model/MemberTest.java b/src/test/model/MemberTest.java
+--- a/src/test/model/MemberTest.java	
++++ b/src/test/model/MemberTest.java	
+@@ -1,7 +1,5 @@
+ package model;
+ 
+-import model.Member;
+-import org.junit.Before;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ 
+@@ -25,7 +23,7 @@
+ 
+     @Test
+      void testMemberFunds(){
+-        assertEquals(5, Member.memberFunds());
++        assertEquals(5, Member.getMemberFunds());
+     }
+ 
+     @Test
+@@ -33,6 +31,13 @@
+         assertEquals(3,Member.members.size());
+     }
+ 
++
++    @Test
++    void testMemberList(){
++        assertEquals("Pranjal President pranjal@ubc.com\nBill Gates Vice President bill@ubc.com\nTim Cook Secretary tim@ubc.com", Member.memberList() );
++    }
++
++
+     @Test
+     public void testChangeTask(){
+         x.changeTask("Pranjal" , "bring new members");
