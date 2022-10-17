@@ -21,13 +21,17 @@ class MemberTest {
 
     @Test
     void testMemberFunds() {
-        assertEquals(25, Member.getMemberFunds());
+        assertEquals(25, Member.getMemberFunds()); //adds 5 five times bacause of run before
+        Member.members.remove(x);
+
 
     }
 
     @Test
     void testAddMember() {
-        assertEquals(2, Member.members.size());
+        assertEquals(1, Member.members.size());
+        Member.members.remove(x);
+
     }
 
 
@@ -36,10 +40,9 @@ class MemberTest {
         assertEquals(Member.members.get(0).getName() + " " + Member.members.get(0).getDesignation()
                         +
                         " " + Member.members.get(0).getEmail() + "\n"
-                        + Member.members.get(0).getName() + " " + Member.members.get(0).getDesignation()
-                        +
-                        " " + Member.members.get(0).getEmail() + "\n"
+
                 , Member.memberList());
+        Member.members.remove(x);
     }
 
 
@@ -48,18 +51,22 @@ class MemberTest {
         x.changeTask("Pranjal", "bring new members");
 
         assertEquals("bring new members", x.getTask());
+        Member.members.remove(x);
+
     }
 
     @Test
     public void testRemoveMember() {
         Member.removemyMember("Pranjal", "President");
-        assertEquals(1, Member.members.size());
+        assertEquals(0, Member.members.size());
+        Member.members.remove(x);
 
     }
 
     @Test
     public void testFeesPaidMembers() {
         assertTrue(Member.feesPaidMembers());
+        Member.members.remove(x);
     }
 
 

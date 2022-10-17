@@ -21,6 +21,8 @@ public class EventsTest {
     @Test
     void testAddEvent() {
         assertEquals(2, Events.event.size());
+        Events.event.remove(x);
+        Events.event.remove(y);
 
 
     }
@@ -28,9 +30,10 @@ public class EventsTest {
     @Test
     void testEventList() {
         assertEquals(Events.event.get(0).getEventname() + " " + Events.event.get(0).getEventdate() + "\n" +
-                Events.event.get(1).getEventname() + " " + Events.event.get(1).getEventdate() + "\n" +
-                Events.event.get(0).getEventname() + " " + Events.event.get(0).getEventdate() + "\n" +
                 Events.event.get(1).getEventname() + " " + Events.event.get(1).getEventdate() + "\n", Events.eventList());
+
+        //Events.event.remove(x);
+        //Events.event.remove(y);
 
 
     }

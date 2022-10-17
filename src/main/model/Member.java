@@ -3,8 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-//Requires - name,designation,isFeespaid,email,task,taskStatus,memberFunds,
-//effects - creates an instance of member with given fields
+
 public class Member {
 
     private String name;
@@ -17,7 +16,8 @@ public class Member {
 
     static List<Member> members = new ArrayList();
 
-
+    //Requires - name,designation,isFeespaid,email,task,taskStatus,memberFunds,
+//effects - creates an instance of member with given fields
     public Member(String name, String designation, boolean isFeesPaid, String email, String task, String taskComplete) {
         this.name = name;
         this.designation = designation;
