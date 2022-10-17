@@ -52,10 +52,13 @@ class MemberTest {
 
     @Test
     public void testChangeTask() {
-        x.changeTask("Pranjal", "bring new members");
+        Member.changeTask("Pranjal", "bring new members");
 
         assertEquals("bring new members", x.getTask());
         Member.members.remove(x);
+
+        assertEquals(false, Member.changeTask("Pranjal", "bring new members"));
+
         // Member.members.remove(y);
 
     }

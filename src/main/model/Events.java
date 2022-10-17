@@ -3,9 +3,9 @@ package model;
 import java.util.ArrayList;
 
 public class Events {
-    private String eventname;
-    private String eventdate;
     static ArrayList<Events> event = new ArrayList();
+    private final String eventname;
+    private final String eventdate;
 
     //Requires : name and date in string format
     // Effects : Creates an instance of event with  name and date
@@ -13,22 +13,6 @@ public class Events {
         this.eventname = name;
         this.eventdate = date;
         addEvent(this);
-    }
-
-    public String getEventname() {
-        return this.eventname;
-    }
-
-    public String getEventdate() {
-        return this.eventdate;
-    }
-
-
-    //Array
-
-    //Effects - adds current event to the array of events
-    public void addEvent(Events e) {
-        event.add(e);
     }
 
     // Effects : returns a string of eventlist
@@ -39,6 +23,22 @@ public class Events {
 
         }
         return event1;
+    }
+
+    public String getEventname() {
+        return this.eventname;
+    }
+
+
+    //Array
+
+    public String getEventdate() {
+        return this.eventdate;
+    }
+
+    //Effects - adds current event to the array of events
+    public void addEvent(Events e) {
+        event.add(e);
     }
 
 

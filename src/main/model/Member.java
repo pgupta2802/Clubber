@@ -6,15 +6,14 @@ import java.util.List;
 
 public class Member {
 
-    private String name;
+    static List<Member> members = new ArrayList();
+    private static int memberFunds;
+    private final String name;
     private String designation = "Member";
     private boolean isFeesPaid = false;
-    private String email;
+    private final String email;
     private String task;
-    private String taskStatus;
-    private static int memberFunds;
-
-    static List<Member> members = new ArrayList();
+    private final String taskStatus;
 
     //Requires - name,designation,isFeespaid,email,task,taskStatus,memberFunds,
 //effects - creates an instance of member with given fields
@@ -34,40 +33,8 @@ public class Member {
 
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public String getDesignation() {
-        return this.designation;
-    }
-
-    //Effects add members fees in memberfunds everytime it is called
-    public void feesIspaid() {
-        this.memberFunds += 5;
-
-    }
-
     public static int getMemberFunds() {
         return memberFunds;
-    }
-
-
-    public String getEmail() {
-        return this.email;
-    }
-
-
-    public String getTask() {
-        return this.task;
-    }
-
-
-    //Array list methods
-
-    //effects :adds the given member in member array
-    public void addMember(Member m) {
-        members.add(m);
     }
 
     //effects :creates a string of all the memberlist
@@ -82,17 +49,16 @@ public class Member {
         return mem;
     }
 
-    public void setTask(String task) {
-        this.task = task;
-    }
-
     //effects: changes the task of given member
-    public static void changeTask(String name, String newTask) {
+    public static boolean changeTask(String name, String newTask) {
+        boolean b = false;
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getName().equals(name)) {
                 members.get(i).setTask(newTask);
+                return true;
             }
         }
+        return b;
     }
 
     //effects :  removes the given member from the class
@@ -112,10 +78,43 @@ public class Member {
             if (members.get(i).isFeesPaid) {
                 System.out.println(members.get(i).getName());
                 a = true;
-                ;
             }
         }
         return a;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+
+    //Array list methods
+
+    public String getDesignation() {
+        return this.designation;
+    }
+
+    //Effects add members fees in memberfunds everytime it is called
+    public void feesIspaid() {
+        memberFunds += 5;
+
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getTask() {
+        return this.task;
+    }
+
+    public void setTask(String task) {
+        this.task = task;
+    }
+
+    //effects :adds the given member in member array
+    public void addMember(Member m) {
+        members.add(m);
     }
 
 
