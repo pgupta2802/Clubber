@@ -49,6 +49,7 @@ public class Main {
             System.out.println("Press 2 for Sponsor");
             System.out.println("Press 3 for Event");
             System.out.println("Press 4 for Total funds recieved");
+            System.out.println("Press 5 for terminating the program");
             int input = in.nextInt();
             if (input == 1) {
                 displayMemberMenu();
