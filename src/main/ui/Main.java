@@ -140,7 +140,8 @@ public class Main {
 
         public void listofMembers() {
             Scanner in = new Scanner(System.in);
-            Member.memberList();
+            String mem = Member.memberList();
+            System.out.println(mem);
             System.out.println();
             System.out.println("Press enter to continue");
             in.nextLine();
@@ -229,7 +230,8 @@ public class Main {
         public void listofSponsors() {
             Scanner in = new Scanner(System.in);
             System.out.println("Here is the list of all sponsors");
-            Sponsor.sponsorList();
+            String sponsor1 = Sponsor.sponsorList();
+            System.out.println(sponsor1);
             System.out.println("Press enter to continue ");
             in.nextLine();
             displaySponsorMenu();
@@ -289,7 +291,8 @@ public class Main {
         public void upcomingEvents(){
             Scanner in = new Scanner(System.in);
             System.out.println("Here is the list of all Events");
-            Events.EventList();
+            String event1 = Events.EventList();
+            System.out.println(event1);
             System.out.println();
             System.out.println("Press enter to continue ");
             in.nextLine();

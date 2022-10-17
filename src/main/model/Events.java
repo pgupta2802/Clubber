@@ -7,6 +7,8 @@ public class Events {
     private String eventdate;
     static ArrayList<Events> event = new ArrayList();
 
+    //Requires name and date
+    // Effects - Creates an instance of event with  name and date
     public Events(String name, String date) {
         this.eventname = name;
         this.eventdate = date;
@@ -23,16 +25,19 @@ public class Events {
 
 
     //Array
+
+    //Effects - adds current event to the array of events
     public void addEvent(Events e) {
         event.add(e);
     }
-
-    public static boolean EventList() {
+// effects returns a string of eventlist
+    public static String EventList() {
+        String event1 = "";
         for (int i = 0; i < event.size(); i++) {
-            System.out.println(event.get(i).eventname + " " + event.get(i).eventdate);
+            event1 += event.get(i).getEventname() + " " + event.get(i).getEventdate();
 
         }
-        return true ;
+        return event1;
     }
 
 

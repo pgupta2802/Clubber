@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+//Requires - name,designation,isFeespaid,email,task,taskStatus,memberFunds,
+//effects - creates an instance of member with given fields
 public class Member {
 
     private String name;
@@ -11,9 +13,9 @@ public class Member {
     private String email;
     private String task;
     private String taskStatus;
-    private static int memberFunds = 0;
-    @SuppressWarnings("checkstyle:VisibilityModifier")
-    public static List<Member> members = new ArrayList();
+    private  int memberFunds = 0;
+
+    static List<Member> members = new ArrayList();
 
 
     public Member(String name, String designation, boolean isFeesPaid, String email, String task, String taskComplete) {
@@ -40,12 +42,13 @@ public class Member {
         return this.designation;
     }
 
+    //Effects add members fees in memberfunds everytime it is called
     public void feesIspaid() {
-        memberFunds += 5;
+        this.memberFunds += 5;
 
     }
 
-    public static int memberFunds() {
+    public  int getMemberFunds() {
         return memberFunds;
     }
 
@@ -59,23 +62,24 @@ public class Member {
         return this.task;
     }
 
-    public String getTaskStatus() {
-        return this.taskStatus;
-    }
 
 
     //Array list methods
+
+    //effects :adds the given member in member array
     public void addMember(Member m) {
         members.add(m);
     }
 
-    public static void memberList() {
+    //effects :creates a string of all the memberlist
+    public static String memberList() {
+        String mem = "";
         for (int i = 0; i < members.size(); i++) {
-            System.out.println(members.get(i).getName() + " " + members.get(i).getDesignation() + " " + members.get(i).getEmail());
-
+            mem += members.get(i).getName() + " " + members.get(i).getDesignation() + " " + members.get(i).getEmail();
         }
+        return mem ;
     }
-
+    //effects: changes the task of given member
     public static void changeTask(String name, String newTask) {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getName().equals(name)) {
@@ -84,7 +88,7 @@ public class Member {
         }
     }
 
-
+    //effects :  removes the given member from the class
     public static void removemyMember(String name, String desig) {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getName().equals(name) && members.get(i).getDesignation().equals(desig)) {
@@ -94,6 +98,7 @@ public class Member {
         }
     }
 
+    //Effects : returns what is the status of payment of fees
     public static boolean feesPaidMembers() {
         boolean a = false;
         for (int i = 0; i < members.size(); i++) {

@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+//
 public class Sponsor {
     String name;
     int fundsGiven;
-    public static ArrayList<Sponsor> sponsors = new ArrayList();
+    static ArrayList<Sponsor> sponsors = new ArrayList();
 
     public Sponsor(String name, int fundsGiven) {
         this.name = name;
@@ -33,12 +34,15 @@ public class Sponsor {
         sponsors.add(s);
     }
 
-    public static boolean sponsorList() {
+    public static String sponsorList() {
+        String sponsor1 = "";
         for (int i = 0; i < sponsors.size(); i++) {
-            System.out.println(sponsors.get(i).getName() + " " + sponsors.get(i).getFundsGiven());
+            sponsor1 += sponsors.get(i).getName() + " " + sponsors.get(i).getFundsGiven();
 
         }
-        return true;
+        return sponsor1;
+
+
     }
 
     public static void removemySponsor(String name) {

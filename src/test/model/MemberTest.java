@@ -1,7 +1,5 @@
 package model;
 
-import model.Member;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,13 +23,20 @@ class MemberTest {
 
     @Test
      void testMemberFunds(){
-        assertEquals(5, Member.memberFunds());
+        assertEquals(5, Member.getMemberFunds());
     }
 
     @Test
     void testAddMember(){
         assertEquals(3,Member.members.size());
     }
+
+
+    @Test
+    void testMemberList(){
+        assertEquals("Pranjal President pranjal@ubc.com\nBill Gates Vice President bill@ubc.com\nTim Cook Secretary tim@ubc.com", Member.memberList() );
+    }
+
 
     @Test
     public void testChangeTask(){

@@ -15,7 +15,7 @@ public class EventsTest {
     void runBefore() {
 
         x = new Events("Pizza Night", "22-10-2022");
-        y = new Events("Billionare Club", "25-10-2022");
+        y = new Events("Billionaire Club", "25-10-2022");
     }
 
     @Test
@@ -27,7 +27,8 @@ public class EventsTest {
 
     @Test
     void testEventList() {
-        assertEquals("Pizza Night 22-10-2022\nBillionare Club 25-10-2022", Events.EventList());
+        assertEquals("Pizza Night 22-10-2022\nBillionaireClub 25-10-2022", Events.EventList());
+
 
     }
 
