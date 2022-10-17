@@ -27,7 +27,7 @@ public class EventsTest {
 
     @Test
     void testEventList() {
-        assertEquals("Pizza Night 22-10-2022\nBillionaireClub 25-10-2022", Events.EventList());
+        assertEquals(" Pizza Night 22-10-2022\nBillionaireClub 25-10-2022", Events.EventList());
 
 
     }

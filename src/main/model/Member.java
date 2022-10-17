@@ -13,7 +13,7 @@ public class Member {
     private String email;
     private String task;
     private String taskStatus;
-    private  int memberFunds = 0;
+    private static int memberFunds = 0;
 
     static List<Member> members = new ArrayList();
 
@@ -48,7 +48,7 @@ public class Member {
 
     }
 
-    public  int getMemberFunds() {
+    public static int getMemberFunds() {
         return memberFunds;
     }
 
