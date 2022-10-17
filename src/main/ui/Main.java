@@ -32,7 +32,7 @@ public class Main {
                 //Scanner in = new Scanner(System.in);
                 //int a = in.nextInt();
                 //if (a == 1) {
-                  //  addNewMember();
+                //  addNewMember();
                 //}
 
 
@@ -66,12 +66,12 @@ public class Main {
 
         }
 
-        public  void totalfundsRecieved() {
+        public void totalfundsRecieved() {
             Scanner in = new Scanner(System.in);
             System.out.println("Here are your total funds");
             System.out.println("Funds recieved by sponsors");
             System.out.println("Funds recieved are " + " $ " + Sponsor.sponsorfunds());
-           // System.out.println("Funds recieved by Sponsors"+ " $ " + String.valueOf(Member.memberFunds()));
+            // System.out.println("Funds recieved by Sponsors"+ " $ " + String.valueOf(Member.memberFunds()));
             System.out.println();
             System.out.println("Press enter to continue");
             in.nextLine();
@@ -269,12 +269,13 @@ public class Main {
                 upcomingEvents();
             }
             if (input == 3) {
-                displayMenu();  ;
+                displayMenu();
             }
 
 
         }
-//1
+
+        //1
         public void addEvent() {
             Scanner in = new Scanner(System.in);
             System.out.println("Enter the name of the event");
@@ -288,7 +289,7 @@ public class Main {
             displayEventMenu();
         }
 
-        public void upcomingEvents(){
+        public void upcomingEvents() {
             Scanner in = new Scanner(System.in);
             System.out.println("Here is the list of all Events");
             String event1 = Events.EventList();

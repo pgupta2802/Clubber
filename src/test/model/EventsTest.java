@@ -27,7 +27,10 @@ public class EventsTest {
 
     @Test
     void testEventList() {
-        assertEquals(" Pizza Night 22-10-2022\nBillionaireClub 25-10-2022", Events.EventList());
+        assertEquals(Events.event.get(0).getEventname() + " " + Events.event.get(0).getEventdate() + "\n" +
+                Events.event.get(1).getEventname() + " " + Events.event.get(1).getEventdate() + "\n" +
+                Events.event.get(0).getEventname() + " " + Events.event.get(0).getEventdate() + "\n" +
+                Events.event.get(1).getEventname() + " " + Events.event.get(1).getEventdate() + "\n", Events.EventList());
 
 
     }

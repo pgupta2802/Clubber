@@ -30,11 +30,12 @@ public class Events {
     public void addEvent(Events e) {
         event.add(e);
     }
-// effects returns a string of eventlist
+
+    // effects returns a string of eventlist
     public static String EventList() {
         String event1 = "";
         for (int i = 0; i < event.size(); i++) {
-            event1 += event.get(i).getEventname() + " " + event.get(i).getEventdate();
+            event1 += event.get(i).getEventname() + " " + event.get(i).getEventdate() + "\n";
 
         }
         return event1;

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 //
 public class Sponsor {
-    String name;
-    int fundsGiven;
+    private String name;
+    private int fundsGiven;
     static ArrayList<Sponsor> sponsors = new ArrayList();
 
     public Sponsor(String name, int fundsGiven) {

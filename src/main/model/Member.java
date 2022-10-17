@@ -13,7 +13,7 @@ public class Member {
     private String email;
     private String task;
     private String taskStatus;
-    private static int memberFunds = 0;
+    private static int memberFunds;
 
     static List<Member> members = new ArrayList();
 
@@ -63,7 +63,6 @@ public class Member {
     }
 
 
-
     //Array list methods
 
     //effects :adds the given member in member array
@@ -75,15 +74,23 @@ public class Member {
     public static String memberList() {
         String mem = "";
         for (int i = 0; i < members.size(); i++) {
-            mem += members.get(i).getName() + " " + members.get(i).getDesignation() + " " + members.get(i).getEmail();
+            mem += members.get(i).getName() + " " + members.get(i).getDesignation()
+                    +
+                    " " + members.get(i).getEmail() + "\n";
+
         }
-        return mem ;
+        return mem;
     }
+
+    public void setTask(String task) {
+        this.task = task;
+    }
+
     //effects: changes the task of given member
     public static void changeTask(String name, String newTask) {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getName().equals(name)) {
-                members.get(i).getTask().equals(newTask);
+                members.get(i).setTask(newTask);
             }
         }
     }
