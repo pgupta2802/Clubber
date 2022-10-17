@@ -30,7 +30,7 @@ public class EventsTest {
         assertEquals(Events.event.get(0).getEventname() + " " + Events.event.get(0).getEventdate() + "\n" +
                 Events.event.get(1).getEventname() + " " + Events.event.get(1).getEventdate() + "\n" +
                 Events.event.get(0).getEventname() + " " + Events.event.get(0).getEventdate() + "\n" +
-                Events.event.get(1).getEventname() + " " + Events.event.get(1).getEventdate() + "\n", Events.EventList());
+                Events.event.get(1).getEventname() + " " + Events.event.get(1).getEventdate() + "\n", Events.eventList());
 
 
     }

@@ -81,7 +81,9 @@ public class Main {
 
         }
 
+        @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
         public void displayMemberMenu() {
+
             Scanner in = new Scanner(System.in);
             System.out.println();
             System.out.println("This is member Menu");
@@ -292,7 +294,7 @@ public class Main {
         public void upcomingEvents() {
             Scanner in = new Scanner(System.in);
             System.out.println("Here is the list of all Events");
-            String event1 = Events.EventList();
+            String event1 = Events.eventList();
             System.out.println(event1);
             System.out.println();
             System.out.println("Press enter to continue ");

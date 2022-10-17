@@ -32,7 +32,7 @@ public class Events {
     }
 
     // effects returns a string of eventlist
-    public static String EventList() {
+    public static String eventList() {
         String event1 = "";
         for (int i = 0; i < event.size(); i++) {
             event1 += event.get(i).getEventname() + " " + event.get(i).getEventdate() + "\n";
