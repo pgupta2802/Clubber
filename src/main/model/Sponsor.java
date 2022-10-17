@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 //
 public class Sponsor {
-    private String name;
-    private int fundsGiven;
     static ArrayList<Sponsor> sponsors = new ArrayList();
+    private final String name;
+    private int fundsGiven;
 
     public Sponsor(String name, int fundsGiven) {
         this.name = name;
@@ -14,24 +14,6 @@ public class Sponsor {
         addSponsor(this);
 
 
-    }
-
-
-    public String getName() {
-        return this.name;
-    }
-
-    public int getFundsGiven() {
-        return fundsGiven;
-    }
-
-    public void addFunds(int funds) {
-        this.fundsGiven += funds;
-    }
-
-    //Array Methods
-    public void addSponsor(Sponsor s) {
-        sponsors.add(s);
     }
 
     public static String sponsorList() {
@@ -50,7 +32,7 @@ public class Sponsor {
             if (sponsors.get(i).getName().equals(name)) {
                 sponsors.remove(i);
             }
-            System.out.println("Sponsor " + name + " removed successfully");
+
         }
     }
 
@@ -60,6 +42,23 @@ public class Sponsor {
             funds += sponsors.get(i).getFundsGiven();
         }
         return funds;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getFundsGiven() {
+        return fundsGiven;
+    }
+
+    public void addFunds(int funds) {
+        this.fundsGiven += funds;
+    }
+
+    //Array Methods
+    public void addSponsor(Sponsor s) {
+        sponsors.add(s);
     }
 
 

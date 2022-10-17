@@ -172,6 +172,7 @@ public class Main {
             System.out.println("Enter the designation");
             String desig = in.nextLine();
             Member.removemyMember(name, desig);
+            System.out.println(name + "Removed Successfully");
             System.out.println("Press enter to continue");
             in.nextLine();
             displayMemberMenu();
@@ -245,6 +246,8 @@ public class Main {
             Scanner in = new Scanner(System.in);
             System.out.println("What is the name of the sponsor?");
             String name = in.nextLine();
+            Sponsor.removemySponsor(name);
+            System.out.println(name + "Removed Successfully");
             in.nextLine();
             displaySponsorMenu();
 

@@ -101,7 +101,7 @@ public class Member {
             if (members.get(i).getName().equals(name) && members.get(i).getDesignation().equals(desig)) {
                 members.remove(i);
             }
-            System.out.println("Member " + name + " removed successfully");
+
         }
     }
 
