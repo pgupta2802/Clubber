@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Events;
+import model.Member;
 import model.Sponsor;
 import org.junit.jupiter.api.Test;
 
@@ -105,6 +106,27 @@ public class JsonReaderTest {
             fail("Couldn't read from file");
         }
     }
+
+    @Test
+    void testReaderEmptyMember() throws FileNotFoundException {
+        Member memberOne = new Member("Pranjal", "President", true, "pranjal@",
+                "none", "done");
+        JsonWriter writer = new JsonWriter("./data/testReaderEmptyEvents.json");
+        writer.open();
+        writer.writeEvents();
+        writer.close();
+
+        JsonReader reader = new JsonReader("./data/testReaderEmptyEvents.json");
+
+        try {
+            Events eventOne = reader.readEvents("./data/testReaderEmptyEvents.json");
+            assertEquals("Google", Events.getEvents().get(0).getEventname());
+            assertEquals("20-10-2020", Events.getEvents().get(0).getEventdate());
+        } catch (Exception e) {
+            fail("Couldn't read from file");
+        }
+    }
+
 
 
 

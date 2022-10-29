@@ -12,7 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-
+//This class is used to read files
+//this files uses the pre existing json files and reads them
 public class JsonReader {
 
 
@@ -23,6 +24,7 @@ public class JsonReader {
         this.source = source;
     }
 
+    //Effects: Starts reading the sponsor
     public Sponsor readSponsor(String s) throws Exception {
         String jsondata = readSponsorFile(source);
         JSONObject jsonObject = new JSONObject(jsondata);
@@ -30,6 +32,7 @@ public class JsonReader {
 
     }
 
+    //Effects: returns the content of the file in string
     private String readSponsorFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -40,7 +43,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-
+    //Effects: parses the sponsor
     private Sponsor parseSponsor(JSONObject jsonObject) throws Exception {
         JSONObject json = new JSONObject();
         json = jsonObject;
@@ -49,6 +52,7 @@ public class JsonReader {
 
     }
 
+    //Effects:add the sponsors in the array
     private Sponsor addSponsors(JSONObject jsonObject) throws Exception {
         JSONArray jsonArray = jsonObject.getJSONArray("Sponsors");
         for (Object json : jsonArray) {
@@ -58,14 +62,14 @@ public class JsonReader {
         return null;
     }
 
-
+    //Effects: helps in adding the sponsors
     private void addSponsorToList(JSONObject jsonObject) throws Exception {
         String name = jsonObject.getString("name");
         int funds = jsonObject.getInt("Funds");
         Sponsor newSponsor = new Sponsor(name, funds);
     }
 
-
+    //Effects: reads the member
     public Member readMember(String s) throws Exception {
         String jsondata = readMemberFile(source);
         JSONObject jsonObject = new JSONObject(jsondata);
@@ -73,7 +77,7 @@ public class JsonReader {
 
     }
 
-
+    //Effects: reads the member file
     private String readMemberFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -84,7 +88,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-
+    //Effects: parses the member file
     private Member parseMember(JSONObject jsonObject) throws Exception {
         JSONObject json = new JSONObject();
         json = jsonObject;
@@ -92,6 +96,7 @@ public class JsonReader {
         return null;
     }
 
+    //Effects: adds the member as a json object
     private Sponsor addMembers(JSONObject jsonObject) throws Exception {
         JSONArray jsonArray = jsonObject.getJSONArray("Members");
         for (Object json : jsonArray) {
@@ -101,6 +106,7 @@ public class JsonReader {
         return null;
     }
 
+    //adds the members to the list
     private void addMembersToList(JSONObject jsonObject) throws Exception {
         String designation = jsonObject.getString("Designation");
         boolean feesPaid = jsonObject.getBoolean("FeesPaid");
@@ -113,6 +119,7 @@ public class JsonReader {
 
     }
 
+    //Effects: used to read the events
     public Events readEvents(String s) throws Exception {
         String jsondata = readEventsFile(source);
         JSONObject jsonObject = new JSONObject(jsondata);
@@ -120,6 +127,7 @@ public class JsonReader {
 
     }
 
+    //Effects: used to read events as a file
     private String readEventsFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -130,6 +138,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
+    //Effects: adds the events as a parse
     private Events parseEvents(JSONObject jsonObject) throws Exception {
         JSONObject json = new JSONObject();
         json = jsonObject;
@@ -138,12 +147,14 @@ public class JsonReader {
 
     }
 
+    //Effects: adds the events to the list
     private void addEventsToList(JSONObject jsonObject) throws Exception {
         String name = jsonObject.getString("name");
         String date = jsonObject.getString("Date");
         Events newEvent = new Events(name, date);
     }
 
+    //Effects:adds the events
     private Events addEvents(JSONObject jsonObject) throws Exception {
         JSONArray jsonArray = jsonObject.getJSONArray("Events");
         for (Object json : jsonArray) {

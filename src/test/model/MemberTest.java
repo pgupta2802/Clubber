@@ -79,5 +79,16 @@ class MemberTest {
         // Member.members.remove(y);
     }
 
+    @Test
+    public void testaskAssignedList() {
+        assertEquals("Pranjal  none\n", Member.taskAssignedList());
+
+    }
+
+    @Test
+    public void testtaskCompletedMembers() {
+        assertEquals("", Member.taskCompletedMembers());
+    }
+
 
 }

@@ -13,7 +13,7 @@ public class Sponsor extends JSONObject {
     private int fundsGiven;
 
     //requires:String name , funds given
-    //Effects : instaniates a new Sponsor with the given fields
+    //Effects : instantiates a new Sponsor with the given fields
     public Sponsor(String name, int fundsGiven) {
         this.name = name;
         this.fundsGiven = fundsGiven;
@@ -79,7 +79,7 @@ public class Sponsor extends JSONObject {
     //JSON Methods
     public static JSONObject toJson() {
         JSONObject sponsorData = new JSONObject();
-        sponsorData.put("Sponsors",  sponsorsToJson());
+        sponsorData.put("Sponsors", sponsorsToJson());
 
         return sponsorData;
 

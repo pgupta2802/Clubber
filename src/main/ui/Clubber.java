@@ -9,11 +9,10 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
+//This is the club class
+//This  creates the club object and runs everthing
 public class Clubber {
-    //    private Sponsor spon;
-//    private Member memb;
-//    private Events even;
+
     private static final String JSON_STORE_MEM = "./data/Members.json";
     private static final String JSON_STORE_EVE = "./data/Events.json";
     private static final String JSON_STORE_SPO = "./data/Sponsors.json";
@@ -24,8 +23,6 @@ public class Clubber {
 
     public Clubber() {
 
-
-        //  jsonReader = new JsonReader(JSON_STORE);
 
         runClubber(true);
     }
@@ -46,8 +43,8 @@ public class Clubber {
 
         }
     }
+//Effects:Displays the menu
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void displayMenu() {
         System.out.println("Welcome To Clubber");
         Scanner in = new Scanner(System.in);
@@ -58,8 +55,12 @@ public class Clubber {
         System.out.println("Press 3 for Event");
         System.out.println("Press 4 for Total funds recieved");
         System.out.println("Press 5 for Exiting clubber. Please save data before leaving.");
-
         int input = in.nextInt();
+        displayMenuOption(input);
+    }
+
+    // Effects: displays the menu option
+    public void displayMenuOption(int input) {
         if (input == 1) {
             displayMemberMenu();
         }
@@ -80,6 +81,7 @@ public class Clubber {
 
 
     }
+//Effects: returns the total funds recieved
 
     public void totalfundsRecieved() {
         Scanner in = new Scanner(System.in);
@@ -96,7 +98,6 @@ public class Clubber {
 
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void displayMemberMenu() {
 
         Scanner in = new Scanner(System.in);
@@ -111,6 +112,11 @@ public class Clubber {
         System.out.println("Press 7 for saving data . It will add new changes!!");
         System.out.println("Press 8 for Loading data");
         int input = in.nextInt();
+        displayMemberInput(input);
+    }
+
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    public void displayMemberInput(int input) {
         if (input == 1) {
             addNewMember();
         }
@@ -120,15 +126,12 @@ public class Clubber {
         if (input == 3) {
             removeMember();
         }
-
         if (input == 4) {
             taskAssignedMenu();
         }
-
         if (input == 5) {
             listofFeesPaid();
         }
-
         if (input == 6) {
             displayMenu();
         }
@@ -139,19 +142,14 @@ public class Clubber {
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
             System.out.println("Data saved");
             displayMemberMenu();
-
         }
-
         if (input == 8) {
             loadDaataMember();
             System.out.println("Data loaded");
             System.out.println();
             displayMemberMenu();
-
-
         }
     }
 
@@ -185,14 +183,14 @@ public class Clubber {
 
     private void membersTaskCompleted() {
         System.out.println("Here are all members who have completed their task");
-        Member.taskCompletedMembers();
+        System.out.println(Member.taskCompletedMembers());
         System.out.println();
         taskAssignedMenu();
     }
 
     private void viewTaskAsssigned() {
         System.out.println("Here are all the tasks assigned to members");
-        Member.taskAssignedList();
+        System.out.println(Member.taskAssignedList());
         System.out.println();
         taskAssignedMenu();
     }
@@ -266,7 +264,6 @@ public class Clubber {
     }
 
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void displaySponsorMenu() {
         Scanner in = new Scanner(System.in);
         System.out.println("Press 1 for adding Sponsor");
@@ -277,6 +274,11 @@ public class Clubber {
         System.out.println("Press 6 for saving data. New changes will be added!");
         System.out.println("Press 7 for Loading data");
         int input = in.nextInt();
+        displaySponsorMenuOption(input);
+    }
+
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    public void displaySponsorMenuOption(int input) {
         if (input == 1) {
             addSponsor();
         }
@@ -294,27 +296,20 @@ public class Clubber {
             displayMenu();
         }
         if (input == 6) {
-
             jsonWriter = new JsonWriter(JSON_STORE_SPO);
             try {
                 saveDataSponsor();
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
             System.out.println("Data saved");
             displaySponsorMenu();
-
         }
-
         if (input == 7) {
-
             loadDataSponsor();
             System.out.println("Data loaded");
             System.out.println();
             displaySponsorMenu();
-
-
         }
     }
 
@@ -374,8 +369,12 @@ public class Clubber {
         System.out.println("Press 3 to go back to the main menu");
         System.out.println("Press 4 to save data");
         System.out.println("Press 5 to reload previous data");
-
         int input = in.nextInt();
+        displayEventMenuOption(input);
+    }
+
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    public void displayEventMenuOption(int input) {
         if (input == 1) {
             addEvent();
         }
@@ -392,18 +391,14 @@ public class Clubber {
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
             System.out.println("Data saved");
             displayEventMenu();
         }
         if (input == 5) {
-
             loadDataEvent();
             System.out.println("Data loaded");
             System.out.println();
             displayEventMenu();
-
-
         }
     }
 

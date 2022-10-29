@@ -21,6 +21,10 @@ also be used as a tool for marketing about their clubs and adding new people as 
 - As a user I want to be able to generate the contact information of the  members
 - As a user I want to be able to add new sponsors, track all the funding received 
 - As a user I want to be able to add new events, deadlines and much more
+- As a user I want to be able to save my data
+- As a user I want to be able to load my previous data 
+- As a user I want to be able to only change my member file, sponsor file and events
+
 
 
 

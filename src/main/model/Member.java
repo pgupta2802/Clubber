@@ -89,19 +89,23 @@ public class Member {
 
     //added new features
     // Effects - Prints a list of all the members who have been assogned a task
-    public static void taskAssignedList() {
+    public static String taskAssignedList() {
+        String taskAssigned = "";
         for (int i = 0; i < members.size(); i++) {
-            System.out.println(members.get(i).getName() + "  " + members.get(i).getTask());
+            taskAssigned = members.get(i).getName() + "  " + members.get(i).getTask() + "\n";
         }
+        return taskAssigned;
     }
 
     //Effects Returns a lost of members who have completed the task
-    public static void taskCompletedMembers() {
+    public static String taskCompletedMembers() {
+        String taskCompleted = "";
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getTaskStatus().equals("done")) {
-                System.out.println(members.get(i).getName());
+                taskCompleted = members.get(i).getName() + "\n";
             }
         }
+        return taskCompleted;
     }
 
     public String getName() {
