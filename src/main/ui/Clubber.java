@@ -97,6 +97,7 @@ public class Clubber {
 
 
     }
+//Effects: used to display the member menu
 
     public void displayMemberMenu() {
 
