@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
-//requires:
-public class Sponsor {
+//This class creates sponsors with their name and the amount of funds given
+//This also creates an array of all the sponsors
+public class Sponsor extends JSONObject {
     static ArrayList<Sponsor> sponsors = new ArrayList();
     private final String name;
     private int fundsGiven;
@@ -40,7 +44,7 @@ public class Sponsor {
         }
     }
 
-    //Effects:
+    //Effects: Adds sponsor funds to the total funds, gives the total number of funds
     public static int sponsorfunds() {
         int funds = 0;
         for (int i = 0; i < sponsors.size(); i++) {
@@ -64,6 +68,40 @@ public class Sponsor {
     //Array Methods
     public void addSponsor(Sponsor s) {
         sponsors.add(s);
+    }
+
+    public static ArrayList<Sponsor> getSponsors() {
+        return sponsors;
+
+    }
+
+
+    //JSON Methods
+    public static JSONObject toJson() {
+        JSONObject sponsorData = new JSONObject();
+        sponsorData.put("Sponsors",  sponsorsToJson());
+
+        return sponsorData;
+
+
+    }
+
+    private JSONObject spontoJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", getName());
+        json.put("Funds", getFundsGiven());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private static JSONArray sponsorsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Sponsor t : getSponsors()) {
+            jsonArray.put(t.spontoJson());
+        }
+
+        return jsonArray;
     }
 
 

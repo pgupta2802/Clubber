@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
+//This class creates new members with their given personal information
+//This class also creates an array of all these members as objects where we can add, remove and get a list of all
 public class Member {
 
     static List<Member> members = new ArrayList();
@@ -13,7 +17,7 @@ public class Member {
     private boolean isFeesPaid = false;
     private final String email;
     private String task;
-    private final String taskStatus;
+    private String taskStatus;
 
     //Requires - name,designation,isFeespaid,email,task,taskStatus,memberFunds,
 //effects - creates an instance of member with given fields
@@ -83,6 +87,23 @@ public class Member {
         return a;
     }
 
+    //added new features
+    // Effects - Prints a list of all the members who have been assogned a task
+    public static void taskAssignedList() {
+        for (int i = 0; i < members.size(); i++) {
+            System.out.println(members.get(i).getName() + "  " + members.get(i).getTask());
+        }
+    }
+
+    //Effects Returns a lost of members who have completed the task
+    public static void taskCompletedMembers() {
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getTaskStatus().equals("done")) {
+                System.out.println(members.get(i).getName());
+            }
+        }
+    }
+
     public String getName() {
         return this.name;
     }
@@ -112,10 +133,57 @@ public class Member {
         this.task = task;
     }
 
+    public String getTaskStatus() {
+        return this.taskStatus;
+    }
+
+
     //effects :adds the given member in member array
     public void addMember(Member m) {
         members.add(m);
     }
 
+    public static List<Member> getMembers() {
+        return members;
+
+    }
+
+
+    //JSON
+    public static JSONObject toJson() {
+        JSONObject memberData = new JSONObject();
+        memberData.put("Members", membersToJson());
+
+        return memberData;
+
+
+    }
+
+    private JSONObject membtoJson() {
+        JSONObject json = new JSONObject();
+
+        json.put("name", getName());
+        json.put("Designation", getDesignation());
+        json.put("FeesPaid", isFeesPaid);
+        json.put("Email", getEmail());
+        json.put("Task", getTask());
+        json.put("Task_Complete", getTaskStatus());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private static JSONArray membersToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Member t : getMembers()) {
+            jsonArray.put(t.membtoJson());
+        }
+
+        return jsonArray;
+    }
+
 
 }
+
+
+

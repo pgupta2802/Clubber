@@ -1,7 +1,12 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
+//This class creates new events with their specification of  name and date.
+//It also creates an array list of these events.
 public class Events {
     static ArrayList<Events> event = new ArrayList();
     private final String eventname;
@@ -39,6 +44,39 @@ public class Events {
     //Effects - adds current event to the array of events
     public void addEvent(Events e) {
         event.add(e);
+    }
+
+    public static ArrayList<Events> getEvents() {
+        return event;
+    }
+
+
+    //JSON Methods
+    public static JSONObject toJson() {
+        JSONObject eventData = new JSONObject();
+        eventData.put("Events", eventsToJson());
+
+        return eventData;
+
+
+    }
+
+    private JSONObject eventoJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", getEventname());
+        json.put("Date", getEventdate());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private static JSONArray eventsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Events t : event) {
+            jsonArray.put(t.eventoJson());
+        }
+
+        return jsonArray;
     }
 
 
