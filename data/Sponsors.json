@@ -1,14 +1,14 @@
 {"Sponsors": [
     {
-        "name": "Pranjal",
-        "Funds": 100
-    },
-    {
-        "name": "SHAMS",
+        "name": "Google",
         "Funds": 10000
     },
     {
-        "name": "KAVYANSH",
-        "Funds": 100000
+        "name": "Amazon",
+        "Funds": 20000
+    },
+    {
+        "name": "Slack",
+        "Funds": 5000
     }
 ]}

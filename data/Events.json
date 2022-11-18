@@ -1,4 +1,14 @@
-{"Events": [{
-    "name": "google",
-    "Date": "20-10-20"
-}]}
+{"Events": [
+    {
+        "name": "Club Meeting",
+        "Date": "20-10-2022"
+    },
+    {
+        "name": "Presentation at Nest",
+        "Date": "25-11-2022"
+    },
+    {
+        "name": "Diwali Party",
+        "Date": "15-11-2022"
+    }
+]}

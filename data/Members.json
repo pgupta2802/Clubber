@@ -1,26 +1,26 @@
 {"Members": [
     {
-        "Designation": "Presidebt",
-        "FeesPaid": true,
-        "Task": "don",
-        "Task_Complete": "nothing",
-        "Email": "none",
-        "name": "Pranjal"
+        "Designation": "Secreatary",
+        "FeesPaid": false,
+        "Task": "add new members",
+        "Task_Complete": "done",
+        "Email": "tim@ubc.com",
+        "name": "Tim"
     },
     {
-        "Designation": "Management",
-        "FeesPaid": true,
-        "Task": "done",
-        "Task_Complete": "bill@",
-        "Email": "not yet",
-        "name": "Bill"
+        "Designation": "Vice President",
+        "FeesPaid": false,
+        "Task": "look for new sponsors",
+        "Task_Complete": "done",
+        "Email": "billgates@ubc.com",
+        "name": "Bill Gates"
     },
     {
-        "Designation": "secreatary",
+        "Designation": "Financer",
         "FeesPaid": true,
-        "Task": "done",
-        "Task_Complete": "tim@",
-        "Email": "webwork",
-        "name": "tim"
+        "Task": "not yet",
+        "Task_Complete": "done",
+        "Email": "berry@ubc.com",
+        "name": "Berry"
     }
 ]}

@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 //This is the club class
-//This  creates the club object and runs everthing
+//This  creates the club object and runs everything
 public class Clubber {
 
     private static final String JSON_STORE_MEM = "./data/Members.json";
@@ -289,7 +289,6 @@ public class Clubber {
         if (input == 3) {
             removeSponsor();
         }
-
         if (input == 4) {
             fundsRecieved();
         }
@@ -309,7 +308,6 @@ public class Clubber {
         if (input == 7) {
             loadDataSponsor();
             System.out.println("Data loaded");
-            System.out.println();
             displaySponsorMenu();
         }
     }
@@ -358,10 +356,12 @@ public class Clubber {
         System.out.println("Funds recieved by Sponsors are as follows");
         Sponsor.sponsorList();
         System.out.println("Total funds recieved are " + " $ " + Sponsor.sponsorfunds());
+        System.out.println();
+        displaySponsorMenu();
     }
 
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    //@SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void displayEventMenu() {
         Scanner in = new Scanner(System.in);
         System.out.println("Here you can add new events");
@@ -392,13 +392,11 @@ public class Clubber {
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("Data saved");
             displayEventMenu();
         }
         if (input == 5) {
             loadDataEvent();
             System.out.println("Data loaded");
-            System.out.println();
             displayEventMenu();
         }
     }
@@ -454,6 +452,8 @@ public class Clubber {
         JsonWriter.writeEvents();
         JsonWriter.close();
         System.out.println("Saved " + " to " + JSON_STORE_EVE);
+        System.out.println("Data saved");
+
     }
 
     public void saveDataSponsor() throws FileNotFoundException {

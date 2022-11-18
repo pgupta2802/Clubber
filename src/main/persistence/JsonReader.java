@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 //This class is used to read files
-//this files uses the pre existing json files and reads them
+//this files uses the  json files and reads them
 public class JsonReader {
 
 
@@ -45,8 +45,7 @@ public class JsonReader {
 
     //Effects: parses the sponsor
     private Sponsor parseSponsor(JSONObject jsonObject) throws Exception {
-        JSONObject json = new JSONObject();
-        json = jsonObject;
+        JSONObject json = jsonObject;
         addSponsors(json);
         return null;
 
@@ -114,7 +113,7 @@ public class JsonReader {
         String taskComplete = jsonObject.getString("Task_Complete");
         String email = jsonObject.getString("Email");
         String name = jsonObject.getString("name");
-        Member newMember = new Member(name, designation, feesPaid, task, taskComplete, email);
+        Member newMember = new Member(name, designation, feesPaid, email, task, taskComplete);
 
 
     }
