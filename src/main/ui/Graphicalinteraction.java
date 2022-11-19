@@ -990,7 +990,7 @@ public class Graphicalinteraction implements ActionListener {
 //        JButton member = new JButton();
         printListMemberButton.setHorizontalAlignment((JLabel.CENTER));
         printListMemberButton.addActionListener(this);
-        printListMemberButton.setText("My Members");
+        printListMemberButton.setText("LOAD MEMBERS");
         printListMemberButton.setFocusable(false);
         button1.add(printListMemberButton);
         return button1;
