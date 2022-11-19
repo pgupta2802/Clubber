@@ -3,6 +3,7 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class Member {
 
 
     }
+
 
     public static int getMemberFunds() {
         return memberFunds;
@@ -120,8 +122,8 @@ public class Member {
     }
 
     //Effects add members fees in memberfunds everytime it is called
-    public void feesIspaid() {
-        memberFunds += 5;
+    public boolean feesIspaid() {
+        return this.isFeesPaid ;
 
     }
 

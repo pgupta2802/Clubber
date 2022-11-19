@@ -478,7 +478,7 @@ public class Clubber {
 
     public void loadDaataMember() {
         try {
-            // jsonSponsor = new JsonReader(JSON_STORE_SPO);
+
             jsonMember.readMember(JSON_STORE_MEM);
             System.out.println("Loaded " + " from " + JSON_STORE_MEM);
         } catch (Exception e) {

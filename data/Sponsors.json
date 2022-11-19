@@ -10,5 +10,13 @@
     {
         "name": "Slack",
         "Funds": 5000
+    },
+    {
+        "name": "ABC",
+        "Funds": 500
+    },
+    {
+        "name": "BC",
+        "Funds": 30000
     }
 ]}

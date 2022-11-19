@@ -1,26 +1,66 @@
 {"Members": [
     {
-        "Designation": "Secreatary",
-        "FeesPaid": false,
-        "Task": "add new members",
-        "Task_Complete": "done",
-        "Email": "tim@ubc.com",
-        "name": "Tim"
-    },
-    {
-        "Designation": "Vice President",
-        "FeesPaid": false,
-        "Task": "look for new sponsors",
-        "Task_Complete": "done",
-        "Email": "billgates@ubc.com",
-        "name": "Bill Gates"
-    },
-    {
-        "Designation": "Financer",
+        "Designation": "Enter Designation here",
         "FeesPaid": true,
-        "Task": "not yet",
-        "Task_Complete": "done",
-        "Email": "berry@ubc.com",
-        "name": "Berry"
+        "Task": "Enter Task here",
+        "Task_Complete": "Task done or not done",
+        "Email": "Enter Email here",
+        "name": "gb"
+    },
+    {
+        "Designation": "Enter Designation here",
+        "FeesPaid": true,
+        "Task": "Enter Task here",
+        "Task_Complete": "Task done or not done",
+        "Email": "Enter Email here",
+        "name": "b"
+    },
+    {
+        "Designation": "Enter Designation here",
+        "FeesPaid": true,
+        "Task": "Enter Task here",
+        "Task_Complete": "Task done or not done",
+        "Email": "Enter Email here",
+        "name": "c"
+    },
+    {
+        "Designation": "Enter Designation here",
+        "FeesPaid": true,
+        "Task": "Enter Task here",
+        "Task_Complete": "Task done or not done",
+        "Email": "Enter Email here",
+        "name": "d"
+    },
+    {
+        "Designation": "Enter Designation here",
+        "FeesPaid": true,
+        "Task": "Enter Task here",
+        "Task_Complete": "Task done or not done",
+        "Email": "Enter Email here",
+        "name": "Enter name here"
+    },
+    {
+        "Designation": "Enter Designation here",
+        "FeesPaid": true,
+        "Task": "Enter Task here",
+        "Task_Complete": "Task done or not done",
+        "Email": "Enter Email here",
+        "name": "Enter name here"
+    },
+    {
+        "Designation": "Enter Designation here",
+        "FeesPaid": false,
+        "Task": "Enter Task here",
+        "Task_Complete": "Task done or not done",
+        "Email": "Enter Email here",
+        "name": "Enter name here"
+    },
+    {
+        "Designation": "Enter Designation here",
+        "FeesPaid": true,
+        "Task": "Enter Task here",
+        "Task_Complete": "Task done or not done",
+        "Email": "Enter Email here",
+        "name": "Enter name here"
     }
 ]}

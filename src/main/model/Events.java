@@ -41,6 +41,11 @@ public class Events {
         return this.eventdate;
     }
 
+    public static ArrayList<Events> getMembers() {
+        return event;
+
+    }
+
     //Effects - adds current event to the array of events
     public void addEvent(Events e) {
         event.add(e);
