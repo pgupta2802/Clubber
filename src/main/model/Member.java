@@ -13,11 +13,12 @@ public class Member {
     static List<Member> members = new ArrayList();
     private static int memberFunds;
     private final String name;
+    private final String email;
     private String designation = "Member";
     private boolean isFeesPaid = false;
-    private final String email;
     private String task;
-    private String taskStatus;
+    private final String taskStatus;
+    private final String description = "A member was added";
 
     //Requires - name,designation,isFeespaid,email,task,taskStatus,memberFunds,
 //effects - creates an instance of member with given fields
@@ -109,12 +110,44 @@ public class Member {
         return taskCompleted;
     }
 
-    public String getName() {
-        return this.name;
+    public static List<Member> getMembers() {
+        return members;
+
     }
 
 
     //Array list methods
+
+    public static void trackinglogs() {
+        Event e = new Event("Member was added");
+        EventLog.getInstance().logEvent(e);
+
+    }
+
+    //JSON
+    public static JSONObject toJson() {
+        JSONObject memberData = new JSONObject();
+        memberData.put("Members", membersToJson());
+
+        return memberData;
+
+
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private static JSONArray membersToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Member t : getMembers()) {
+            jsonArray.put(t.membtoJson());
+        }
+
+        return jsonArray;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 
     public String getDesignation() {
         return this.designation;
@@ -142,26 +175,11 @@ public class Member {
         return this.taskStatus;
     }
 
-
     //effects :adds the given member in member array
     public void addMember(Member m) {
         members.add(m);
-    }
-
-    public static List<Member> getMembers() {
-        return members;
-
-    }
-
-
-    //JSON
-    public static JSONObject toJson() {
-        JSONObject memberData = new JSONObject();
-        memberData.put("Members", membersToJson());
-
-        return memberData;
-
-
+//        Event e = new Event(description);
+//        EventLog.getInstance().logEvent(e);
     }
 
     private JSONObject membtoJson() {
@@ -174,17 +192,6 @@ public class Member {
         json.put("Task", getTask());
         json.put("Task_Complete", getTaskStatus());
         return json;
-    }
-
-    // EFFECTS: returns things in this workroom as a JSON array
-    private static JSONArray membersToJson() {
-        JSONArray jsonArray = new JSONArray();
-
-        for (Member t : getMembers()) {
-            jsonArray.put(t.membtoJson());
-        }
-
-        return jsonArray;
     }
 
 

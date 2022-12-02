@@ -17,7 +17,7 @@ public class JsonWriterTest {
         try {
             Sponsor wr = new Sponsor("Google", 100);
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
-            writer.open();
+            JsonWriter.open();
             fail("IOException was expected");
         } catch (IOException e) {
             // pass
@@ -29,9 +29,9 @@ public class JsonWriterTest {
         try {
             Sponsor sponsor = new Sponsor("Google", 1000);
             JsonWriter writer = new JsonWriter("./data/testWriterEmptySponsor.json");
-            writer.open();
-            writer.writeSponsor();
-            writer.close();
+            JsonWriter.open();
+            JsonWriter.writeSponsor();
+            JsonWriter.close();
 
             JsonReader reader = new JsonReader("./data/testWriterEmptySponsor.json");
             sponsor = reader.readSponsor("./data/testWriterEmptySponsor.json");
@@ -51,9 +51,9 @@ public class JsonWriterTest {
             Sponsor sponsorTwo = new Sponsor("Google", 1000);
 
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralSponsor.json");
-            writer.open();
-            writer.writeSponsor();
-            writer.close();
+            JsonWriter.open();
+            JsonWriter.writeSponsor();
+            JsonWriter.close();
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralSponsor.json");
             sponsorOne = reader.readSponsor("./data/testWriterGeneralSponsor.json");
@@ -76,9 +76,9 @@ public class JsonWriterTest {
 
 
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralMember.json");
-            writer.open();
-            writer.writeMembers();
-            writer.close();
+            JsonWriter.open();
+            JsonWriter.writeMembers();
+            JsonWriter.close();
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralMember.json");
             memberOne = reader.readMember("./data/testWriterGeneralMember.json");
@@ -102,9 +102,9 @@ public class JsonWriterTest {
 
 
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralMember.json");
-            writer.open();
-            writer.writeMembers();
-            writer.close();
+            JsonWriter.open();
+            JsonWriter.writeMembers();
+            JsonWriter.close();
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralMember.json");
             memberOne = reader.readMember("./data/testWriterGeneralMember.json");
@@ -127,9 +127,9 @@ public class JsonWriterTest {
 
 
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyEvents.json");
-            writer.open();
-            writer.writeEvents();
-            writer.close();
+            JsonWriter.open();
+            JsonWriter.writeEvents();
+            JsonWriter.close();
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyEvents.json");
             eventOne = reader.readEvents("./data/testWriterEmptyEvents.json");
@@ -145,40 +145,38 @@ public class JsonWriterTest {
     }
 
     @Test
-        void testWriterGeneralEvents () {
-            try {
+    void testWriterGeneralEvents() {
+        try {
 
-                Events eventOne = new Events("Workshop", "20-10-2022");
-                Events eventTwo = new Events("Dance", "11-10-2022");
-
-
-                JsonWriter writer = new JsonWriter("./data/testWriterGeneralEvents.json");
-                writer.open();
-                writer.writeEvents();
-                writer.close();
-
-                JsonReader reader = new JsonReader("./data/testWriterGeneralEvents.json");
-                eventOne = reader.readEvents("./data/testWriterGeneralEvents.json");
-                eventTwo = reader.readEvents("./data/testWriterGeneralEvents.json");
-                List<Events> eventsList = Events.getEvents();
-                assertEquals(6, eventsList.size());
-                assertEquals("Workshop", Events.getEvents().get(0).getEventname());
-                assertEquals("20-10-2022", Events.getEvents().get(0).getEventdate());
-                assertEquals("20-10-2022", Events.getEvents().get(0).getEventdate());
+            Events eventOne = new Events("Workshop", "20-10-2022");
+            Events eventTwo = new Events("Dance", "11-10-2022");
 
 
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralEvents.json");
+            JsonWriter.open();
+            JsonWriter.writeEvents();
+            JsonWriter.close();
 
-            } catch (Exception e) {
-                fail("Exception should not have been thrown");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralEvents.json");
+            eventOne = reader.readEvents("./data/testWriterGeneralEvents.json");
+            eventTwo = reader.readEvents("./data/testWriterGeneralEvents.json");
+            List<Events> eventsList = Events.getEvents();
+            assertEquals(6, eventsList.size());
+            assertEquals("Workshop", Events.getEvents().get(0).getEventname());
+            assertEquals("20-10-2022", Events.getEvents().get(0).getEventdate());
+            assertEquals("20-10-2022", Events.getEvents().get(0).getEventdate());
 
-            }
 
-
+        } catch (Exception e) {
+            fail("Exception should not have been thrown");
 
         }
 
 
     }
+
+
+}
 
 
 

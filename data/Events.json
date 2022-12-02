@@ -1,22 +1,14 @@
 {"Events": [
     {
-        "name": "Club Meeting",
-        "Date": "20-10-2022"
+        "name": "Pranjal",
+        "Date": "22-10-2022"
     },
     {
-        "name": "Presentation at Nest",
-        "Date": "25-11-2022"
+        "name": "My Event",
+        "Date": "22-10-1030"
     },
     {
-        "name": "Diwali Party",
-        "Date": "15-11-2022"
-    },
-    {
-        "name": "kavyansh",
-        "Date": "25-12-2022"
-    },
-    {
-        "name": "kk",
-        "Date": "99"
+        "name": "NEw Event",
+        "Date": "22-10-2002"
     }
 ]}

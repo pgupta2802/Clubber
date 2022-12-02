@@ -11,6 +11,7 @@ public class Sponsor extends JSONObject {
     static ArrayList<Sponsor> sponsors = new ArrayList();
     private final String name;
     private int fundsGiven;
+    private final String description = "Sponsor was created";
 
     //requires:String name , funds given
     //Effects : instantiates a new Sponsor with the given fields
@@ -53,6 +54,38 @@ public class Sponsor extends JSONObject {
         return funds;
     }
 
+    public static ArrayList<Sponsor> getSponsors() {
+        return sponsors;
+
+    }
+
+    //JSON Methods
+    public static JSONObject toJson() {
+        JSONObject sponsorData = new JSONObject();
+        sponsorData.put("Sponsors", sponsorsToJson());
+
+        return sponsorData;
+
+
+    }
+
+    public static void trackinglogs() {
+        Event e = new Event("Sponsor  was added");
+        EventLog.getInstance().logEvent(e);
+
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private static JSONArray sponsorsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Sponsor t : getSponsors()) {
+            jsonArray.put(t.spontoJson());
+        }
+
+        return jsonArray;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -68,22 +101,8 @@ public class Sponsor extends JSONObject {
     //Array Methods
     public void addSponsor(Sponsor s) {
         sponsors.add(s);
-    }
-
-    public static ArrayList<Sponsor> getSponsors() {
-        return sponsors;
-
-    }
-
-
-    //JSON Methods
-    public static JSONObject toJson() {
-        JSONObject sponsorData = new JSONObject();
-        sponsorData.put("Sponsors", sponsorsToJson());
-
-        return sponsorData;
-
-
+        Event e = new Event(description);
+        EventLog.getInstance().logEvent(e);
     }
 
     private JSONObject spontoJson() {
@@ -91,17 +110,6 @@ public class Sponsor extends JSONObject {
         json.put("name", getName());
         json.put("Funds", getFundsGiven());
         return json;
-    }
-
-    // EFFECTS: returns things in this workroom as a JSON array
-    private static JSONArray sponsorsToJson() {
-        JSONArray jsonArray = new JSONArray();
-
-        for (Sponsor t : getSponsors()) {
-            jsonArray.put(t.spontoJson());
-        }
-
-        return jsonArray;
     }
 
 

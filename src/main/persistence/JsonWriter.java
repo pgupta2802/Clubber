@@ -20,7 +20,7 @@ public class JsonWriter {
 
     public JsonWriter(String destination) {
 
-        this.destination = destination;
+        JsonWriter.destination = destination;
     }
 
     //Effects: opens the fileWriter

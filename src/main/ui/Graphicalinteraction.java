@@ -1,8 +1,7 @@
 package ui;
 
-import model.Events;
-import model.Member;
-import model.Sponsor;
+import model.Event;
+import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -10,35 +9,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.Iterator;
 
 //This is the java swinc , which implements the GUI
 //It has all the methods required for making a graphiuc friendly interface
 
 
 public class Graphicalinteraction implements ActionListener {
-    public static void main(String[] args) {
-        new Graphicalinteraction();
-
-    }
-
     private static final String destination = "./data/Members.json";
     private static final String JSON_STORE_MEM = "./data/Members.json";
     private static final String JSON_STORE_EVE = "./data/Events.json";
     private static final String JSON_STORE_SPO = "./data/Sponsors.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonSponsor;
-    private JsonReader jsonMember;
-    private JsonReader jsonEvent;
     int count = 0;
     int eventCounter = 0;
     int sponsorCounter = 0;
     int countloadMem = 0;
-
     JFrame loadingEventDataFrame = new JFrame();
     JButton addingNewSponsorButton = new JButton();
-
-
     JButton memberButton = new JButton();
     JButton printEventsButton = new JButton();
     JButton addingNewMemberButton = new JButton();
@@ -51,49 +41,40 @@ public class Graphicalinteraction implements ActionListener {
     JTextField memberEmail = new JTextField();
     JButton submitMemberButton = new JButton();
     JButton universalMainMenuButton = new JButton();
-
-
     JButton printListMemberButton = new JButton();
     JButton removingMember = new JButton();
     JTextField eventNameText = new JTextField();
     JTextField eventdateText = new JTextField();
-
     JTextField sponsorNameText = new JTextField();
-
     JTextField sponsorfundText = new JTextField();
-
     JButton submitNewEventButton = new JButton();
     JFrame addingSponsorFrame = new JFrame();
-
-
     JButton events = new JButton();
     JButton addingNewEventsButton = new JButton();
     JFrame addingNewEventsFrame = new JFrame();
     JButton printSponsorbuttonnotFrame = new JButton();
-
-
     JButton sponsors = new JButton();
     JFrame welcomeFrame = new JFrame();
-
-
     JFrame loadingDataFrame = new JFrame();
-
-
     JFrame memberFrame = new JFrame();
     JFrame eventFrame = new JFrame();
     JFrame addEventFrame = new JFrame();
-
-
     JFrame sponsorsFrame = new JFrame();
     JButton submitNewSponsorButton = new JButton();
-
+    private JsonWriter jsonWriter;
+    private JsonReader jsonSponsor;
+    private JsonReader jsonMember;
+    private JsonReader jsonEvent;
     // Constructor - creayes an instance of GU
-    Graphicalinteraction() {
-//        jsonMember = new JsonReader(JSON_STORE_MEM);
-//        jsonEvent = new JsonReader(JSON_STORE_EVE);
-//        jsonSponsor = new JsonReader(JSON_STORE_SPO);
 
+    Graphicalinteraction() {
         welcomePanel();
+
+    }
+
+    public static void main(String[] args) {
+        new Graphicalinteraction();
+
 
     }
 
@@ -149,24 +130,9 @@ public class Graphicalinteraction implements ActionListener {
 
     }
 
-    //Effects: Crfeates the main menu panel
+    //Effects: Creates the main menu panel
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void welcomePanel() {
-//        if (loader) {
-//
-//            try {
-//                jsonMember.readMember(JSON_STORE_MEM);
-//                System.out.println("Loaded " + " from " + JSON_STORE_MEM);
-//                jsonEvent.readEvents(JSON_STORE_EVE);
-//                System.out.println("Loaded " + " from " + JSON_STORE_EVE);
-//                jsonSponsor.readSponsor(JSON_STORE_SPO);
-//                System.out.println("Loaded " + " from " + JSON_STORE_SPO);
-//
-//            } catch (Exception e) {
-//                System.out.println("Unable to read from file: ");
-//            }
-//
-//            loader = false;
 
         reset();
         JPanel secondPanel = new JPanel();
@@ -182,9 +148,11 @@ public class Graphicalinteraction implements ActionListener {
 
 
         JPanel button1 = new JPanel();
-        button1.setBackground(new Color(0, 0, 0));
+        button1.setBackground(new Color(194, 67, 67));
         button1.setBounds(300, 250, 150, 50);
         button1.setLayout(new BorderLayout());
+        ubcImage();
+        welcomeImage();
 
 
 //        JButton member = new JButton();
@@ -196,7 +164,7 @@ public class Graphicalinteraction implements ActionListener {
 
 
         JPanel button2 = new JPanel();
-        button2.setBackground(new Color(0, 0, 0));
+        button2.setBackground(new Color(171, 73, 73));
         button2.setBounds(300, 310, 150, 50);
 
         button2.setLayout(new BorderLayout());
@@ -207,6 +175,7 @@ public class Graphicalinteraction implements ActionListener {
         events.setFocusable(false);
         events.setBackground(Color.cyan);
         button2.add(events);
+//        ubcImage();
 
 
         JPanel button3 = new JPanel();
@@ -225,32 +194,58 @@ public class Graphicalinteraction implements ActionListener {
 
 //        this.setTitle();
         welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        welcomeFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+                }
+
+            }
+        });
+
+
         welcomeFrame.setSize(800, 800);
-        welcomeFrame.setVisible(true);
+//        welcomeFrame.setVisible(true);
         welcomeFrame.setResizable(false);
         welcomeFrame.setLayout(null);
         welcomeFrame.getContentPane().setBackground(new Color(0, 0, 0));
 
         welcomeFrame.add(secondPanel);
         welcomeFrame.add(firstPanel());
+
         welcomeFrame.add(button1);
         welcomeFrame.add(button2);
         welcomeFrame.add(button3);
+        welcomeFrame.setVisible(true);
 
 
     }
 
     //Effects - adds ubc image
     private void ubcImage() {
+        ImageIcon imageIcon = new ImageIcon("data/ubc1.jpeg");
+        Image ubcimage = imageIcon.getImage();
+        Image modifiedubcImage = ubcimage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(modifiedubcImage);
+        JLabel label = new JLabel();
+        label.setBounds(0, 30, 200, 200);
+        label.setIcon(imageIcon);
+        welcomeFrame.add(label);
+
+
+    }
+
+    //Effects - Giveswelcome image
+    private void welcomeImage() {
         ImageIcon imageIcon = new ImageIcon("data/ubc.jpeg");
         Image ubcimage = imageIcon.getImage();
         Image modifiedubcImage = ubcimage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(modifiedubcImage);
         JLabel label = new JLabel();
-        label.setBounds(0, 0, 200, 200);
+        label.setBounds(600, 30, 200, 200);
         label.setIcon(imageIcon);
         welcomeFrame.add(label);
-//        welcomeFrame.setVisible(true);
 
 
     }
@@ -266,6 +261,7 @@ public class Graphicalinteraction implements ActionListener {
             welcomeFrame.dispose();
             addMemberMethod();
         } else if (e.getSource() == submitMemberButton) {
+            addMemberFrame.dispose();
             operationsOnSubmitMembers();
         } else if (e.getSource() == universalMainMenuButton) {
             welcomePanel();
@@ -303,6 +299,7 @@ public class Graphicalinteraction implements ActionListener {
         saveSponsor(sponsorName, funds);
     }
 
+    // Effects - saves the sponsor
     private void saveSponsor(String sponsorName, int funds) {
 
         try {
@@ -313,10 +310,11 @@ public class Graphicalinteraction implements ActionListener {
                 sponsorCounter++;
             }
             Sponsor c = new Sponsor(sponsorName, funds);
+            Events.trackinglogs();
             JsonWriter writer1 = new JsonWriter(JSON_STORE_SPO);
-            writer1.open();
-            writer1.writeSponsor();
-            writer1.close();
+            JsonWriter.open();
+            JsonWriter.writeSponsor();
+            JsonWriter.close();
         } catch (IOException c) {
             System.out.println("  Error     ! IO Exception");
         } catch (Exception e) {
@@ -349,10 +347,11 @@ public class Graphicalinteraction implements ActionListener {
             }
 
             Events c = new Events(eventName, eventDate);
+            Events.trackinglogs();
             JsonWriter writer1 = new JsonWriter(JSON_STORE_EVE);
-            writer1.open();
-            writer1.writeEvents();
-            writer1.close();
+            JsonWriter.open();
+            JsonWriter.writeEvents();
+            JsonWriter.close();
 
 
         } catch (IOException c) {
@@ -394,10 +393,11 @@ public class Graphicalinteraction implements ActionListener {
                 count++;
             }
             Member c = new Member(membername, membberDesignation, feespaid, email, task, taskcomplete);
+            Member.trackinglogs();
             JsonWriter writer1 = new JsonWriter(destination);
-            writer1.open();
-            writer1.writeMembers();
-            writer1.close();
+            JsonWriter.open();
+            JsonWriter.writeMembers();
+            JsonWriter.close();
 
 
         } catch (IOException c) {
@@ -431,6 +431,16 @@ public class Graphicalinteraction implements ActionListener {
     //Effects events frames method is vreated
     public void eventFrameMethod() {
         eventFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        eventFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+                }
+
+            }
+        });
+
         eventFrame.setSize(800, 800);
         eventFrame.setVisible(true);
         eventFrame.setResizable(false);
@@ -447,6 +457,15 @@ public class Graphicalinteraction implements ActionListener {
     //effects same as above
     public void sponsorFrameMethod() {
         sponsorsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        sponsorsFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+                }
+
+            }
+        });
         sponsorsFrame.setSize(800, 800);
         sponsorsFrame.setVisible(true);
         sponsorsFrame.setResizable(false);
@@ -461,7 +480,7 @@ public class Graphicalinteraction implements ActionListener {
 
     public JPanel printListSponsorButton() {
         JPanel button1 = new JPanel();
-        button1.setBackground(new Color(0, 0, 0));
+        button1.setBackground(new Color(144, 70, 70));
         button1.setBounds(300, 310, 150, 50);
         button1.setLayout(new BorderLayout());
 
@@ -479,7 +498,7 @@ public class Graphicalinteraction implements ActionListener {
 
     public JPanel addingNewSponsorButtonEventsMenu() {
         JPanel button1 = new JPanel();
-        button1.setBackground(new Color(0, 0, 0));
+        button1.setBackground(new Color(185, 86, 86));
         button1.setBounds(300, 250, 150, 50);
         button1.setLayout(new BorderLayout());
 
@@ -536,6 +555,15 @@ public class Graphicalinteraction implements ActionListener {
 
 
         loadingEventDataFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loadingEventDataFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+                }
+
+            }
+        });
         loadingEventDataFrame.setSize(800, 800);
         loadingEventDataFrame.setVisible(true);
         loadingEventDataFrame.setResizable(false);
@@ -584,6 +612,15 @@ public class Graphicalinteraction implements ActionListener {
     public void addSponsorFrameMethod() {
 
         addingSponsorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addingSponsorFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+                }
+
+            }
+        });
         addingSponsorFrame.setSize(800, 800);
         addingSponsorFrame.setVisible(true);
         addingSponsorFrame.setResizable(false);
@@ -644,24 +681,53 @@ public class Graphicalinteraction implements ActionListener {
         return secondPanel;
     }
 
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void addEventFrameMethod() {
         addEventFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        addEventFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+                }
+
+            }
+        });
+
+
         addEventFrame.setSize(800, 800);
         addEventFrame.setVisible(true);
         addEventFrame.setResizable(false);
         addEventFrame.setLayout(null);
-        addEventFrame.getContentPane().setBackground(new Color(0, 0, 0));
-        addEventFrame.add(firstPanel());
-        addEventFrame.add(addEventFrameHeading());
-        addEventFrame.add(getEventNameUser());
-        addEventFrame.add(getEventdateText());
+        addEventFrame.getContentPane();
+//        setBackground(new Color(0, 0, 0));
+        addEventFrame.add(
 
-        addEventFrame.add(submitNewEvent());
-        addEventFrame.add(universalmainMenuButtonPanel());
+                firstPanel());
+        addEventFrame.add(
+
+                addEventFrameHeading());
+        addEventFrame.add(
+
+                getEventNameUser());
+        addEventFrame.add(
+
+                getEventdateText());
+
+        addEventFrame.add(
+
+                submitNewEvent());
+        addEventFrame.add(
+
+                universalmainMenuButtonPanel());
 
 
     }
+
+
     //idbijr
+
 
     private JPanel submitNewEvent() {
         JPanel button1 = new JPanel();
@@ -743,9 +809,21 @@ public class Graphicalinteraction implements ActionListener {
     }
 
 
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void memberFrame() {
 
         memberFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        memberFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+
+                }
+
+            }
+        });
+
         memberFrame.setSize(800, 800);
         memberFrame.setVisible(true);
         memberFrame.setResizable(false);
@@ -763,10 +841,23 @@ public class Graphicalinteraction implements ActionListener {
     }
 
 
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void addMemberMethod() {
 
 
         addMemberFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addMemberFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+
+                }
+
+            }
+        });
+
+
         addMemberFrame.setSize(800, 800);
         addMemberFrame.setVisible(true);
         addMemberFrame.setResizable(false);
@@ -795,6 +886,16 @@ public class Graphicalinteraction implements ActionListener {
 
 
         loadingDataFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loadingDataFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Iterator<Event> it = EventLog.getInstance().iterator();
+                while (it.hasNext()) {
+                    System.out.println(it.next().toString());
+
+                }
+
+            }
+        });
         loadingDataFrame.setSize(800, 800);
         loadingDataFrame.setVisible(true);
         loadingDataFrame.setResizable(false);
@@ -828,12 +929,11 @@ public class Graphicalinteraction implements ActionListener {
                 mem.setLayout(new BorderLayout());
                 mem.setBounds(0, 150 + 40 * i, 800, 50);
 
-                mem.setText(Member.getMembers().get(i).getName() + "      " + Member.getMembers().get(i).getName()
-                        + "      " + Member.getMembers().get(i).getDesignation() + "      "
-                        + Member.getMembers().get(i).feesIspaid()
-                        + "      " + Member.getMembers().get(i).getEmail()
-                        + "      " + Member.getMembers().get(i).getTask()
-                        + "      " + Member.getMembers().get(i).getTaskStatus());
+                mem.setText(Member.getMembers().get(i).getName() + "    " + Member.getMembers().get(i).getDesignation()
+                        + "    "
+                        + "    " + Member.getMembers().get(i).getEmail()
+                        + "    " + Member.getMembers().get(i).getTask()
+                        + "    " + Member.getMembers().get(i).getTaskStatus());
 
 
                 memberlistPanel.add(mem);

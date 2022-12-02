@@ -6,7 +6,6 @@ import model.Sponsor;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -48,16 +47,16 @@ public class JsonReaderTest {
         Sponsor sponsorOne = new Sponsor("Google", 1000);
         Sponsor sponsorTwo = new Sponsor("Amazon", 10000);
         JsonWriter writer = new JsonWriter("./data/testReaderGeneralSponsor.json");
-        writer.open();
-        writer.writeSponsor();
-        writer.close();
+        JsonWriter.open();
+        JsonWriter.writeSponsor();
+        JsonWriter.close();
 
         JsonReader reader = new JsonReader("./data/testReaderGeneralSponsor.json");
         try {
             Sponsor sponsorthree = reader.readSponsor("./data/testReaderGeneralSponsor.json");
             assertEquals("Google", Sponsor.getSponsors().get(0).getName());
             List<Sponsor> sponsor = Sponsor.getSponsors();
-            assertEquals(4,sponsor.size());
+            assertEquals(4, sponsor.size());
             assertEquals("Google", sponsor.get(0).getName());
             assertEquals(1000, Sponsor.getSponsors().get(0).getFundsGiven());
             assertEquals("Amazon", sponsor.get(1).getName());
@@ -72,9 +71,9 @@ public class JsonReaderTest {
     void testReaderEmptyEvent() throws FileNotFoundException {
         Events event = new Events("Google", "20-10-2020");
         JsonWriter writer = new JsonWriter("./data/testReaderEmptyEvents.json");
-        writer.open();
-        writer.writeEvents();
-        writer.close();
+        JsonWriter.open();
+        JsonWriter.writeEvents();
+        JsonWriter.close();
 
         JsonReader reader = new JsonReader("./data/testReaderEmptyEvents.json");
 
@@ -92,9 +91,9 @@ public class JsonReaderTest {
     void testReaderGeneralEvent() throws FileNotFoundException {
         Events event = new Events("Google", "20-10-2020");
         JsonWriter writer = new JsonWriter("./data/testReaderEmptyEvents.json");
-        writer.open();
-        writer.writeEvents();
-        writer.close();
+        JsonWriter.open();
+        JsonWriter.writeEvents();
+        JsonWriter.close();
 
         JsonReader reader = new JsonReader("./data/testReaderEmptyEvents.json");
 
@@ -112,9 +111,9 @@ public class JsonReaderTest {
         Member memberOne = new Member("Pranjal", "President", true, "pranjal@",
                 "none", "done");
         JsonWriter writer = new JsonWriter("./data/testReaderEmptyEvents.json");
-        writer.open();
-        writer.writeEvents();
-        writer.close();
+        JsonWriter.open();
+        JsonWriter.writeEvents();
+        JsonWriter.close();
 
         JsonReader reader = new JsonReader("./data/testReaderEmptyEvents.json");
 
@@ -126,10 +125,6 @@ public class JsonReaderTest {
             fail("Couldn't read from file");
         }
     }
-
-
-
-
 
 
 }

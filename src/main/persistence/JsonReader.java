@@ -1,8 +1,6 @@
 package persistence;
 
-import model.Events;
-import model.Member;
-import model.Sponsor;
+import model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,7 +15,7 @@ import java.util.stream.Stream;
 public class JsonReader {
 
 
-    private String source;
+    private final String source;
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
@@ -39,6 +37,8 @@ public class JsonReader {
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
         }
+        EventLog.getInstance().logEvent(new Event("Sponsor file was loaded"));
+
 
         return contentBuilder.toString();
     }
@@ -82,7 +82,9 @@ public class JsonReader {
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
+            EventLog.getInstance().logEvent(new Event("Member file was loaded"));
         }
+
 
         return contentBuilder.toString();
     }
@@ -132,7 +134,9 @@ public class JsonReader {
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
+            EventLog.getInstance().logEvent(new Event("Event file was loaded"));
         }
+
 
         return contentBuilder.toString();
     }

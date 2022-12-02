@@ -11,6 +11,7 @@ public class Events {
     static ArrayList<Events> event = new ArrayList();
     private final String eventname;
     private final String eventdate;
+    private final String description = "A event was added";
 
     //Requires : name and date in string format
     // Effects : Creates an instance of event with  name and date
@@ -18,6 +19,7 @@ public class Events {
         this.eventname = name;
         this.eventdate = date;
         addEvent(this);
+
     }
 
     // Effects : returns a string of eventlist
@@ -30,31 +32,17 @@ public class Events {
         return event1;
     }
 
-    public String getEventname() {
-        return this.eventname;
-    }
-
-
-    //Array
-
-    public String getEventdate() {
-        return this.eventdate;
-    }
-
     public static ArrayList<Events> getMembers() {
         return event;
 
     }
 
-    //Effects - adds current event to the array of events
-    public void addEvent(Events e) {
-        event.add(e);
-    }
+
+    //Array
 
     public static ArrayList<Events> getEvents() {
         return event;
     }
-
 
     //JSON Methods
     public static JSONObject toJson() {
@@ -66,11 +54,10 @@ public class Events {
 
     }
 
-    private JSONObject eventoJson() {
-        JSONObject json = new JSONObject();
-        json.put("name", getEventname());
-        json.put("Date", getEventdate());
-        return json;
+    public static void trackinglogs() {
+        Event e = new Event("Event was added");
+        EventLog.getInstance().logEvent(e);
+
     }
 
     // EFFECTS: returns things in this workroom as a JSON array
@@ -82,6 +69,28 @@ public class Events {
         }
 
         return jsonArray;
+    }
+
+    public String getEventname() {
+        return this.eventname;
+    }
+
+    public String getEventdate() {
+        return this.eventdate;
+    }
+
+    //Effects - adds current event to the array of events
+    public void addEvent(Events e) {
+        event.add(e);
+        Event newEvents = new Event(description);
+        EventLog.getInstance().logEvent(newEvents);
+    }
+
+    private JSONObject eventoJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", getEventname());
+        json.put("Date", getEventdate());
+        return json;
     }
 
 

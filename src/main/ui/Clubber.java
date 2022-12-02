@@ -214,6 +214,7 @@ public class Clubber {
         System.out.println("Has the member completed the task? done/not done");
         String taskStatus = in.nextLine();
         Member newMem = new Member(name, desg, fees, email, task, taskStatus);
+
         System.out.println("Member added");
         displayMemberMenu();
     }
