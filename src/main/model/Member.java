@@ -14,11 +14,11 @@ public class Member {
     private static int memberFunds;
     private final String name;
     private final String email;
+    private final String taskStatus;
+    private final String description = "A member was added";
     private String designation = "Member";
     private boolean isFeesPaid = false;
     private String task;
-    private final String taskStatus;
-    private final String description = "A member was added";
 
     //Requires - name,designation,isFeespaid,email,task,taskStatus,memberFunds,
 //effects - creates an instance of member with given fields
@@ -118,9 +118,10 @@ public class Member {
 
     //Array list methods
 
-    public static void trackinglogs() {
+    public static Event trackinglogs() {
         Event e = new Event("Member was added");
         EventLog.getInstance().logEvent(e);
+        return e;
 
     }
 
@@ -178,8 +179,6 @@ public class Member {
     //effects :adds the given member in member array
     public void addMember(Member m) {
         members.add(m);
-//        Event e = new Event(description);
-//        EventLog.getInstance().logEvent(e);
     }
 
     private JSONObject membtoJson() {

@@ -6,8 +6,8 @@ import java.util.Date;
 
 public class Event {
     private static final int HASH_CONSTANT = 13;
-    private Date dateLogged;
-    private String description;
+    private final Date dateLogged;
+    private final String description;
 
     public Event(String description) {
         dateLogged = Calendar.getInstance().getTime();

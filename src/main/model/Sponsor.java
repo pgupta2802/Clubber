@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Sponsor extends JSONObject {
     static ArrayList<Sponsor> sponsors = new ArrayList();
     private final String name;
-    private int fundsGiven;
     private final String description = "Sponsor was created";
+    private int fundsGiven;
 
     //requires:String name , funds given
     //Effects : instantiates a new Sponsor with the given fields
@@ -69,9 +69,10 @@ public class Sponsor extends JSONObject {
 
     }
 
-    public static void trackinglogs() {
+    public static Event trackinglogs() {
         Event e = new Event("Sponsor  was added");
         EventLog.getInstance().logEvent(e);
+        return e;
 
     }
 
@@ -101,8 +102,6 @@ public class Sponsor extends JSONObject {
     //Array Methods
     public void addSponsor(Sponsor s) {
         sponsors.add(s);
-        Event e = new Event(description);
-        EventLog.getInstance().logEvent(e);
     }
 
     private JSONObject spontoJson() {

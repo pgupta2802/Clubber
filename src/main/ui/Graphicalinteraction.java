@@ -131,6 +131,7 @@ public class Graphicalinteraction implements ActionListener {
     }
 
     //Effects: Creates the main menu panel
+
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void welcomePanel() {
 
@@ -310,7 +311,7 @@ public class Graphicalinteraction implements ActionListener {
                 sponsorCounter++;
             }
             Sponsor c = new Sponsor(sponsorName, funds);
-            Events.trackinglogs();
+            Sponsor.trackinglogs();
             JsonWriter writer1 = new JsonWriter(JSON_STORE_SPO);
             JsonWriter.open();
             JsonWriter.writeSponsor();
@@ -681,48 +682,28 @@ public class Graphicalinteraction implements ActionListener {
         return secondPanel;
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+
     public void addEventFrameMethod() {
         addEventFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         addEventFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 Iterator<Event> it = EventLog.getInstance().iterator();
                 while (it.hasNext()) {
                     System.out.println(it.next().toString());
                 }
-
             }
         });
-
-
         addEventFrame.setSize(800, 800);
         addEventFrame.setVisible(true);
         addEventFrame.setResizable(false);
         addEventFrame.setLayout(null);
         addEventFrame.getContentPane();
-//        setBackground(new Color(0, 0, 0));
-        addEventFrame.add(
-
-                firstPanel());
-        addEventFrame.add(
-
-                addEventFrameHeading());
-        addEventFrame.add(
-
-                getEventNameUser());
-        addEventFrame.add(
-
-                getEventdateText());
-
-        addEventFrame.add(
-
-                submitNewEvent());
-        addEventFrame.add(
-
-                universalmainMenuButtonPanel());
-
-
+        addEventFrame.add(firstPanel());
+        addEventFrame.add(addEventFrameHeading());
+        addEventFrame.add(getEventNameUser());
+        addEventFrame.add(getEventdateText());
+        addEventFrame.add(submitNewEvent());
+        addEventFrame.add(universalmainMenuButtonPanel());
     }
 
 
@@ -809,21 +790,16 @@ public class Graphicalinteraction implements ActionListener {
     }
 
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void memberFrame() {
-
         memberFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         memberFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 Iterator<Event> it = EventLog.getInstance().iterator();
                 while (it.hasNext()) {
                     System.out.println(it.next().toString());
-
                 }
-
             }
         });
-
         memberFrame.setSize(800, 800);
         memberFrame.setVisible(true);
         memberFrame.setResizable(false);
@@ -833,31 +809,21 @@ public class Graphicalinteraction implements ActionListener {
         memberFrame.add(memberframeheading());
         memberFrame.add(addingNewMemberButton());
         memberFrame.add(printListMemberButton());
-
-
         memberFrame.add(universalmainMenuButtonPanel());
-
-
     }
 
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void addMemberMethod() {
-
-
         addMemberFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addMemberFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 Iterator<Event> it = EventLog.getInstance().iterator();
                 while (it.hasNext()) {
                     System.out.println(it.next().toString());
-
                 }
-
             }
         });
-
-
         addMemberFrame.setSize(800, 800);
         addMemberFrame.setVisible(true);
         addMemberFrame.setResizable(false);
@@ -874,8 +840,6 @@ public class Graphicalinteraction implements ActionListener {
         addMemberFrame.add(getmemberFeesPaid());
         addMemberFrame.add(submitNewMember());
         addMemberFrame.add(universalmainMenuButtonPanel());
-
-
     }
 
     public void loadingdataMethod() {
@@ -905,46 +869,34 @@ public class Graphicalinteraction implements ActionListener {
 
     }
 
+
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void addingmembersList() {
-
         try {
             JsonReader reader = new JsonReader(destination);
             if (count == 0) {
                 Member c3 = reader.readMember(destination);
                 count++;
             }
-
-
             JPanel memberlistPanel = new JPanel();
             memberlistPanel.setBackground(new Color(0, 0, 0));
             memberlistPanel.setBounds(0, 300, 800, 600);
             memberlistPanel.setLayout(new BorderLayout());
-
             for (int i = 0; i < Member.getMembers().size(); i++) {
-
                 JLabel mem = new JLabel();
-
                 mem.setForeground(Color.green);
                 mem.setLayout(new BorderLayout());
                 mem.setBounds(0, 150 + 40 * i, 800, 50);
-
                 mem.setText(Member.getMembers().get(i).getName() + "    " + Member.getMembers().get(i).getDesignation()
-                        + "    "
-                        + "    " + Member.getMembers().get(i).getEmail()
+                        + "    " + "    " + Member.getMembers().get(i).getEmail()
                         + "    " + Member.getMembers().get(i).getTask()
                         + "    " + Member.getMembers().get(i).getTaskStatus());
-
-
                 memberlistPanel.add(mem);
             }
             loadingDataFrame.add(memberlistPanel);
-
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public JPanel headingforloadingData() {

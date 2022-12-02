@@ -28,6 +28,12 @@ public class EventsTest {
     }
 
     @Test
+    public void testTrackingLogs() {
+        Event events = new Event("Event was added");
+        assertEquals(events.getDescription(), Events.trackinglogs().getDescription());
+    }
+
+    @Test
     void testEventList() {
         assertEquals(Events.event.get(0).getEventname() + " " + Events.event.get(0).getEventdate() + "\n" +
                 Events.event.get(1).getEventname() + " " + Events.event.get(1).getEventdate() + "\n", Events.eventList());

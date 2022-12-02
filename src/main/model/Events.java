@@ -54,10 +54,10 @@ public class Events {
 
     }
 
-    public static void trackinglogs() {
+    public static Event trackinglogs() {
         Event e = new Event("Event was added");
         EventLog.getInstance().logEvent(e);
-
+        return e;
     }
 
     // EFFECTS: returns things in this workroom as a JSON array
@@ -82,8 +82,6 @@ public class Events {
     //Effects - adds current event to the array of events
     public void addEvent(Events e) {
         event.add(e);
-        Event newEvents = new Event(description);
-        EventLog.getInstance().logEvent(newEvents);
     }
 
     private JSONObject eventoJson() {
