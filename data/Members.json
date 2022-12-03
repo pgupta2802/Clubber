@@ -1,34 +1,10 @@
 {"Members": [
     {
-        "Designation": "Enter Designation here",
+        "Designation": "President",
         "FeesPaid": true,
-        "Task": "Enter Task here",
-        "Task_Complete": "Task done or not done",
-        "Email": "Enter Email here",
-        "name": "dfvf"
-    },
-    {
-        "Designation": "Enter Designation here",
-        "FeesPaid": true,
-        "Task": "Enter Task here",
-        "Task_Complete": "Task done or not done",
-        "Email": "Enter Email here",
+        "Task": "Do some work",
+        "Task_Complete": "Task done ",
+        "Email": "pranjal@ubc.ca",
         "name": "Pranjal"
-    },
-    {
-        "Designation": "Enter Designation here",
-        "FeesPaid": true,
-        "Task": "Enter Task here",
-        "Task_Complete": "Task done or not done",
-        "Email": "Enter Email here",
-        "name": "dfr"
-    },
-    {
-        "Designation": "Enter Designation here",
-        "FeesPaid": true,
-        "Task": "Enter Task here",
-        "Task_Complete": "Task done or not done",
-        "Email": "Enter Email here",
-        "name": "dfr"
     }
 ]}
