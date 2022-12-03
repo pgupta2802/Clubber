@@ -9,6 +9,7 @@ import java.util.ArrayList;
 //It also creates an array list of these events.
 public class Events {
     static ArrayList<Events> event = new ArrayList();
+    private static int count = 0;
     private final String eventname;
     private final String eventdate;
     private final String description = "A event was added";
@@ -20,6 +21,10 @@ public class Events {
         this.eventdate = date;
         addEvent(this);
 
+    }
+
+    public static void changecount() {
+        count = 1;
     }
 
     // Effects : returns a string of eventlist
@@ -54,12 +59,6 @@ public class Events {
 
     }
 
-    public static Event trackinglogs() {
-        Event e = new Event("Event was added");
-        EventLog.getInstance().logEvent(e);
-        return e;
-    }
-
     // EFFECTS: returns things in this workroom as a JSON array
     private static JSONArray eventsToJson() {
         JSONArray jsonArray = new JSONArray();
@@ -82,6 +81,12 @@ public class Events {
     //Effects - adds current event to the array of events
     public void addEvent(Events e) {
         event.add(e);
+        if (count == 1) {
+            Event event1 = new Event("Event was added");
+            EventLog.getInstance().logEvent(event1);
+
+        }
+
     }
 
     private JSONObject eventoJson() {

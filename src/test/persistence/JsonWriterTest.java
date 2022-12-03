@@ -59,9 +59,9 @@ public class JsonWriterTest {
             sponsorOne = reader.readSponsor("./data/testWriterGeneralSponsor.json");
 
             List<Sponsor> sponsorList = Sponsor.getSponsors();
-            assertEquals(4, Sponsor.getSponsors().size());
-            assertEquals("Amazon", Sponsor.getSponsors().get(0).getName());
-            assertEquals("Google", Sponsor.getSponsors().get(1).getName());
+            assertEquals(6, Sponsor.getSponsors().size());
+            assertEquals("Google", Sponsor.getSponsors().get(0).getName());
+            assertEquals("Amazon", Sponsor.getSponsors().get(1).getName());
 
         } catch (Exception e) {
             fail("Exception should not have been thrown");
@@ -111,7 +111,7 @@ public class JsonWriterTest {
 
 
             List<Member> MemberList = Member.getMembers();
-            assertEquals(2, MemberList.size());
+            assertEquals(6, MemberList.size());
             assertEquals("Pranjal", Member.getMembers().get(0).getName());
 
         } catch (Exception e) {
@@ -161,7 +161,7 @@ public class JsonWriterTest {
             eventOne = reader.readEvents("./data/testWriterGeneralEvents.json");
             eventTwo = reader.readEvents("./data/testWriterGeneralEvents.json");
             List<Events> eventsList = Events.getEvents();
-            assertEquals(6, eventsList.size());
+            assertEquals(12, eventsList.size());
             assertEquals("Workshop", Events.getEvents().get(0).getEventname());
             assertEquals("20-10-2022", Events.getEvents().get(0).getEventdate());
             assertEquals("20-10-2022", Events.getEvents().get(0).getEventdate());

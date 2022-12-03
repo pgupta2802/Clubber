@@ -27,11 +27,6 @@ public class EventsTest {
 
     }
 
-    @Test
-    public void testTrackingLogs() {
-        Event events = new Event("Event was added");
-        assertEquals(events.getDescription(), Events.trackinglogs().getDescription());
-    }
 
     @Test
     void testEventList() {

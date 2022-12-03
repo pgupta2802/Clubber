@@ -20,7 +20,6 @@ import java.util.Iterator;
 
 public class Graphicalinteraction implements ActionListener {
     private static final String destination = "./data/Members.json";
-    private static final String JSON_STORE_MEM = "./data/Members.json";
     private static final String JSON_STORE_EVE = "./data/Events.json";
     private static final String JSON_STORE_SPO = "./data/Sponsors.json";
     int count = 0;
@@ -311,7 +310,6 @@ public class Graphicalinteraction implements ActionListener {
                 sponsorCounter++;
             }
             Sponsor c = new Sponsor(sponsorName, funds);
-            Sponsor.trackinglogs();
             JsonWriter writer1 = new JsonWriter(JSON_STORE_SPO);
             JsonWriter.open();
             JsonWriter.writeSponsor();
@@ -348,7 +346,6 @@ public class Graphicalinteraction implements ActionListener {
             }
 
             Events c = new Events(eventName, eventDate);
-            Events.trackinglogs();
             JsonWriter writer1 = new JsonWriter(JSON_STORE_EVE);
             JsonWriter.open();
             JsonWriter.writeEvents();
@@ -394,7 +391,6 @@ public class Graphicalinteraction implements ActionListener {
                 count++;
             }
             Member c = new Member(membername, membberDesignation, feespaid, email, task, taskcomplete);
-            Member.trackinglogs();
             JsonWriter writer1 = new JsonWriter(destination);
             JsonWriter.open();
             JsonWriter.writeMembers();

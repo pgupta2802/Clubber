@@ -33,11 +33,6 @@ public class SponsorTest {
 
     }
 
-    @Test
-    public void testTrackingLogs() {
-        Event events = new Event("Sponsor  was added");
-        assertEquals(events.getDescription(), Sponsor.trackinglogs().getDescription());
-    }
 
     @Test
     void testRemovemySponsor() {

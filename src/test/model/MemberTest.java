@@ -85,12 +85,6 @@ class MemberTest {
 
     }
 
-    @Test
-    public void testTrackingLogs() {
-        Event events = new Event("Member was added");
-        assertEquals(events.getDescription(), Member.trackinglogs().getDescription());
-    }
-
 
     @Test
     public void testtaskCompletedMembers() {

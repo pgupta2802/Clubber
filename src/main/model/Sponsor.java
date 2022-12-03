@@ -9,6 +9,7 @@ import java.util.ArrayList;
 //This also creates an array of all the sponsors
 public class Sponsor extends JSONObject {
     static ArrayList<Sponsor> sponsors = new ArrayList();
+    private static int counts = 0;
     private final String name;
     private final String description = "Sponsor was created";
     private int fundsGiven;
@@ -59,6 +60,10 @@ public class Sponsor extends JSONObject {
 
     }
 
+    public static void changecount() {
+        counts = 1;
+    }
+
     //JSON Methods
     public static JSONObject toJson() {
         JSONObject sponsorData = new JSONObject();
@@ -69,12 +74,6 @@ public class Sponsor extends JSONObject {
 
     }
 
-    public static Event trackinglogs() {
-        Event e = new Event("Sponsor  was added");
-        EventLog.getInstance().logEvent(e);
-        return e;
-
-    }
 
     // EFFECTS: returns things in this workroom as a JSON array
     private static JSONArray sponsorsToJson() {
@@ -102,6 +101,12 @@ public class Sponsor extends JSONObject {
     //Array Methods
     public void addSponsor(Sponsor s) {
         sponsors.add(s);
+        if (counts == 1) {
+            Event event1 = new Event("Sponsor was added");
+            EventLog.getInstance().logEvent(event1);
+
+        }
+
     }
 
     private JSONObject spontoJson() {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-
+//This class is used to log every new event created and add it
 public class EventLog implements Iterable<Event> {
 
     private static EventLog theLog;

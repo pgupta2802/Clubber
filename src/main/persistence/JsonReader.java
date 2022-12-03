@@ -58,6 +58,7 @@ public class JsonReader {
             JSONObject nextSponsor = (JSONObject) json;
             addSponsorToList(nextSponsor);
         }
+        Sponsor.changecount();
         return null;
     }
 
@@ -104,6 +105,7 @@ public class JsonReader {
             JSONObject nextMember = (JSONObject) json;
             addMembersToList(nextMember);
         }
+        Member.changecount();
         return null;
     }
 
@@ -164,6 +166,7 @@ public class JsonReader {
             JSONObject nextEvent = (JSONObject) json;
             addEventsToList(nextEvent);
         }
+        Events.changecount();
         return null;
     }
 

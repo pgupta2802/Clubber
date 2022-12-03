@@ -3,7 +3,7 @@ package model;
 import java.util.Calendar;
 import java.util.Date;
 
-
+//This class is used to create new events for every user action
 public class Event {
     private static final int HASH_CONSTANT = 13;
     private final Date dateLogged;

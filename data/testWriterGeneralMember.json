@@ -1,8 +1,26 @@
-{"Members": [{
-    "Designation": "President",
-    "FeesPaid": true,
-    "Task": "none",
-    "Task_Complete": "done",
-    "Email": "pranjal@",
-    "name": "Pranjal"
-}]}
+{"Members": [
+    {
+        "Designation": "President",
+        "FeesPaid": true,
+        "Task": "none",
+        "Task_Complete": "done",
+        "Email": "pranjal@",
+        "name": "Pranjal"
+    },
+    {
+        "Designation": "President",
+        "FeesPaid": true,
+        "Task": "none",
+        "Task_Complete": "done",
+        "Email": "pranjal@",
+        "name": "Pranjal"
+    },
+    {
+        "Designation": "President",
+        "FeesPaid": true,
+        "Task": "none",
+        "Task_Complete": "done",
+        "Email": "pranjal@",
+        "name": "Pranjal"
+    }
+]}

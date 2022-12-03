@@ -12,6 +12,7 @@ public class Member {
 
     static List<Member> members = new ArrayList();
     private static int memberFunds;
+    private static int count = 0;
     private final String name;
     private final String email;
     private final String taskStatus;
@@ -118,11 +119,9 @@ public class Member {
 
     //Array list methods
 
-    public static Event trackinglogs() {
-        Event e = new Event("Member was added");
-        EventLog.getInstance().logEvent(e);
-        return e;
 
+    public static void changecount() {
+        count = 1;
     }
 
     //JSON
@@ -179,6 +178,11 @@ public class Member {
     //effects :adds the given member in member array
     public void addMember(Member m) {
         members.add(m);
+        if (count == 1) {
+            Event event1 = new Event("Member was added");
+            EventLog.getInstance().logEvent(event1);
+
+        }
     }
 
     private JSONObject membtoJson() {
