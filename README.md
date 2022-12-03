@@ -35,7 +35,44 @@ also be used as a tool for marketing about their clubs and adding new people as 
 - You can always go back on the main menu and you are never stuck
 
 
+## Phase 4 : Task-2
 
+- User can easily see all the logged activities
+- User can see if a new member is added event is added or a sponsor is added
+- The console also  tracks if the data was loaded from the three files if requested by the user
+- All the activity performed by the user is tracked on the console
+- here is an Example -
+- Fri Dec 02 18:09:14 PST 2022
+  Member file was loaded
+  Fri Dec 02 18:09:14 PST 2022
+  Member was added
+  Fri Dec 02 18:09:20 PST 2022
+  Member was added
+  Fri Dec 02 18:09:20 PST 2022
+  Member was added
+  Fri Dec 02 18:09:30 PST 2022
+  Event file was loaded
+  Fri Dec 02 18:09:30 PST 2022
+  Event was added
+  Fri Dec 02 18:09:44 PST 2022
+  Sponsor file was loaded
+  Fri Dec 02 18:09:44 PST 2022
+  Sponsor was added
+- This only displays when exit is pressed
 
+## Phase 4 : Task 3
+- My design has three classes member, events and sponsors which are all independent from each other
+- There is a class of clubber which uses all these three classes and makes objects for all of them
+- The Json reader and writer also use the three classes to create and extract data from these objects
+- The event log class has a list of all the events, Event is a class which creates an Event for the console
+- The event log class creates a singleton list of event
+
+## Changes I would have done to refactor it more
+- I would have made a new class in my model package which had a list of all the three classes that is events, members 
+- This would have made a new hierarchy which would then include everything under it and a part of it
+- Then I could easily see what all is going on together in my club rather than referring to each of the classes
+- It could also give me better control on handling these lists together
+
+ 
 
 
