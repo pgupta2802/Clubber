@@ -906,7 +906,6 @@ public class Graphicalinteraction implements ActionListener {
         mainmenu.setForeground(new Color(195, 195, 195));
         mainmenu.setHorizontalAlignment((JLabel.CENTER));
         secondPanel.add(mainmenu);
-
         return secondPanel;
 
 
